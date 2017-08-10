@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ColaComNois.Entidades.Despesas>
+
+@{
+    ViewBag.Title = "Listar - Despesas";
+}
+
+<h3>Listar - Despesas</h3>
+
+<p>
+    @Html.ActionLink("Cadastrar Despesa", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Pagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Vencimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @item.Valor.ToString("c")
+        </td>
+        <td>
+            @item.Data_Pagamento.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @item.Data_Pagamento.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detales", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

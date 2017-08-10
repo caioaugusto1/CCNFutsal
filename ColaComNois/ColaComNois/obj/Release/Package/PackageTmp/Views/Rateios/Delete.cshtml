@@ -1,0 +1,63 @@
+﻿@model ColaComNois.Entidades.Rateio
+
+@{
+    ViewBag.Title = "Excluir Rateio";
+}
+
+<h2>Excluir - Rateio</h2>
+
+<h3>Você tem certeza que deseja excluir?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdJogador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdJogador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdDespesa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdDespesa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Valor.ToString("c"))*@
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Pagamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Pagamento.ToString("dd/MM/yyyy"))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRecebedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRecebedor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para Lista", "Index")
+        </div>
+    }
+</div>

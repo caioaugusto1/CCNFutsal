@@ -1,0 +1,57 @@
+﻿@model ColaComNois.Entidades.Despesas
+
+@{
+    ViewBag.Title = "Detalhes - Jogador";
+}
+
+<h3>Detalhes - Jogador</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Model.Valor.ToString("c")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Vencimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Vencimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Pagamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Pagamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>

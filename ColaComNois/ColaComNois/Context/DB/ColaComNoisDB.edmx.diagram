@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33b832bc2d464d36a8309176da65aa72" Name="Diagram1">
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Despesas" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Jogadores" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Logins" Width="1.5" PointX="5.625" PointY="1.5" />
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Adversario" Width="1.5" PointX="5.125" PointY="4.75" />
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Jogos" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="ColaComNoisFutsalModel.CCN_Rateios" Width="1.5" PointX="3.25" PointY="0.875" />
+        <AssociationConnector Association="ColaComNoisFutsalModel.FK_CCN_Jogos_CCN_Adversario" />
+        <AssociationConnector Association="ColaComNoisFutsalModel.FK_Despesas_Jogadores_Despesas1" />
+        <AssociationConnector Association="ColaComNoisFutsalModel.FK_Despesas_Jogadores_Despesas_Jogadores1" ></AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

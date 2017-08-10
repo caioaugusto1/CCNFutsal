@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ColaComNois.Entidades.Jogos>
+
+@{
+    ViewBag.Title = "Listar - Jogo";
+}
+
+<h3>Listar - Jogo</h3>
+
+<p>
+    @Html.ActionLink("Cadastrar Jogo", "Create")
+</p>
+<table class="table" style="text-align:center;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdAdversario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quadro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultadoColaComNois)
+        </th>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultadoAdversario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mandante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adversario.Nome)
+        </td>
+        <td>
+            @if (item.Quadro.ToString() == ColaComNois.Entidades.Quadro.A.ToString())
+            {
+                @: 1° Quadro
+            }
+            else
+            {
+                @: 2° Quadro
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultadoColaComNois)
+        </td>
+        <td>
+            X
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultadoAdversario)
+        </td>
+        <td>
+            @if (item.Mandante)
+            {
+                @: Jogo Dentro
+            }
+            else
+            {
+                @: Visitante
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detailes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model ColaComNois.Entidades.Jogadores
+
+@{
+    ViewBag.Title = "Excluir Jogador";
+}
+
+<h2>Excluir - Jogador</h2>
+
+<h3>Você tem certeza que deseja excluir?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Admissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Admissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Demissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Demissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para Lista", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,67 @@
+﻿@model IList<ColaComNois.Entidades.Jogadores>
+
+@{
+    ViewBag.Title = "Listar - Jogador";
+}
+
+<h3>Listar - Jogador</h3>
+
+<p>
+    @Html.ActionLink("Cadastrar Jogador", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th width="110px">RG</th>
+            <th width="160px">Data de Nascimento</th>
+            <th>Admissão</th>
+            <th>Demissão</th>
+            <th>Comissão</th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RG)
+                </td>
+                <td>
+                    @item.Data_Nascimento.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.Data_Admissao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.Data_Demissao.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comissao)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detales", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#RG").mask("99.999.999-9");
+        });
+
+</script>

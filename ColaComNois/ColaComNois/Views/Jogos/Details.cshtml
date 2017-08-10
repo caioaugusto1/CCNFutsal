@@ -1,0 +1,74 @@
+﻿@model ColaComNois.Entidades.Jogos
+
+@{
+    ViewBag.Title = "Detalhe - Jogo";
+}
+
+<h3>Detalhes - Jogo</h3>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Quadro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quadro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultadoColaComNois)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultadoColaComNois)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultadoAdversario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultadoAdversario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mandante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mandante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdAdversario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdAdversario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>

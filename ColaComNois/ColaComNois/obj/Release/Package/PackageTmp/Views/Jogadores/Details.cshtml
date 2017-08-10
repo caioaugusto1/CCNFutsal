@@ -1,0 +1,76 @@
+﻿@model ColaComNois.Entidades.Jogadores
+
+@{
+    ViewBag.Title = "Detalhes - Jogador";
+}
+
+<h3>Detalhes - Jogador</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Admissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Admissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Demissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Demissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar a Lista", "Index")
+</p>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#RG").mask("99.999.999-9");
+        });
+
+</script>

@@ -1,0 +1,58 @@
+﻿@model IList<ColaComNois.Entidades.Rateio>
+
+@{
+    ViewBag.Title = "Listar - Rateio de Jogadores";
+}
+
+<h3>Listar - Rateio de Jogadores</h3>
+
+<p>
+    @Html.ActionLink("Cadastrar Rateio", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Jogador Nome
+        </th>
+        <th>
+            Despesa Nome
+        </th>
+        <th>
+            Valor
+        </th>
+        <th>
+            Data de Pagamento
+        </th>
+        <th>
+            Quem Recebeu?
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @item.Jogador.Nome
+        </td>
+        <td>
+            @item.Despesa.Nome
+        </td>
+        <td>
+            @item.Valor.ToString("c")
+        </td>
+        <td>
+            @item.Data_Pagamento.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @item.NomeRecebedor
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detailes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

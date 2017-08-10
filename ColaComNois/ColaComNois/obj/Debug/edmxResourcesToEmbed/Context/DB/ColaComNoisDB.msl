@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ColaComNoisFutsalModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CCN_Despesas">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Despesas">
+        <MappingFragment StoreEntitySet="CCN_Despesas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Data_Vencimento" ColumnName="Data_Vencimento" />
+          <ScalarProperty Name="Data_Pagamento" ColumnName="Data_Pagamento" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCN_Jogadores">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Jogadores">
+        <MappingFragment StoreEntitySet="CCN_Jogadores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="RG" ColumnName="RG" />
+          <ScalarProperty Name="Data_Nascimento" ColumnName="Data_Nascimento" />
+          <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+          <ScalarProperty Name="Data_Demissao" ColumnName="Data_Demissao" />
+          <ScalarProperty Name="Comissao" ColumnName="Comissao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCN_Logins">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Logins">
+        <MappingFragment StoreEntitySet="CCN_Logins">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="SobreNome" ColumnName="SobreNome" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCN_Adversario">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Adversario">
+        <MappingFragment StoreEntitySet="CCN_Adversario">
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCN_Jogos">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Jogos">
+        <MappingFragment StoreEntitySet="CCN_Jogos">
+          <ScalarProperty Name="IdAdversario" ColumnName="IdAdversario" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+          <ScalarProperty Name="Referente" ColumnName="Referente" />
+          <ScalarProperty Name="Mandante" ColumnName="Mandante" />
+          <ScalarProperty Name="ResultadoAdversario" ColumnName="ResultadoAdversario" />
+          <ScalarProperty Name="ResultadoColaComNois" ColumnName="ResultadoColaComNois" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Quadro" ColumnName="Quadro" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCN_Rateios">
+      <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Rateios">
+        <MappingFragment StoreEntitySet="CCN_Rateios">
+          <ScalarProperty Name="IdRecebedor" ColumnName="IdRecebedor" />
+          <ScalarProperty Name="Data_Pagamento" ColumnName="Data_Pagamento" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="IdDespesa" ColumnName="IdDespesa" />
+          <ScalarProperty Name="IdJogador" ColumnName="IdJogador" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

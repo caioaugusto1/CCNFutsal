@@ -1,0 +1,49 @@
+﻿@model ColaComNois.Entidades.Adversarios
+
+@{
+    ViewBag.Title = "Detalhes - Adversário";
+}
+
+<h3>Detalhes - Adversário</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>
