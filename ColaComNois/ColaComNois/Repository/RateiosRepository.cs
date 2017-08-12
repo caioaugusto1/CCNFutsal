@@ -15,6 +15,13 @@ namespace ColaComNois.Repository
 
         }
 
+        public override IList<CCN_Rateios> ObterTodos()
+        {
+            return _context.Rateios.OrderBy(r => r.Data_Pagamento)
+                .ThenBy(r => r.CCN_Jogadores.Nome)
+                .ToList();
+        }
+
         //public override IList<CCN_Rateios> ObterTodos()
         //{
         //    using (SqlConnection connSql = new SqlConnection(connectionString))
@@ -55,13 +62,18 @@ namespace ColaComNois.Repository
         //        return e;
         //    }
 
-        public override IList<CCN_Rateios> ObterTodos()
-        {
-            var resultados = _context.Rateios
-                .OrderBy(r => r.Data_Pagamento)
-                .ThenBy(r => r.CCN_Despesas.Nome);
+        //public override IList<CCN_Rateios> ObterTodos()
+        //{
+        //    var sql = "select CCN_Rateios.Id, CCN_Rateios.Valor, CCN_Rateios.Data_Pagamento" +
+        //        "CCN_Jogadores.Id, CCN_Jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome from CCN_Rateios " +
+        //        "inner join CCN_Jogadores on CCN_Jogadores.Id = IdJogador " +
+        //        "inner join CCN_Despesas on CCN_Despesas.Id = IdDespesa order by JogadorNome" +
+        //        "select CCN_Jogadores.Nome as RecebedorNome from CCN_Jogadores inner join CCN_Rateios" +
+        //        "on CCN_Jogadores.Id = CCN_Rateios.IdRecebedor";
 
-            return resultados.ToList();
-        }
+        //    return _context.Database.Connection.Query<CCN_Rateios>(sql)
+        //        .OrderBy(c => c.Data_Pagamento)
+        //        .ToList();
+        //}
     }
 }

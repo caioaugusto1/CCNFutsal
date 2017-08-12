@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ColaComNoisFutsalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="CCN_Adversarioss">
+    <Schema Namespace="colacomnois_.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CCN_Adversarios">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -35,9 +35,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="RG" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="Data_Nascimento" Type="datetime" Nullable="false" />
-          <Property Name="Data_Admissao" Type="datetime" Nullable="false" />
-          <Property Name="Data_Demissao" Type="datetime" />
+          <Property Name="Data_Nascimento" Type="date" Nullable="false" />
+          <Property Name="Data_Admissao" Type="date" Nullable="false" />
+          <Property Name="Data_Demissao" Type="date" />
           <Property Name="Comissao" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CCN_Jogos">
@@ -76,11 +76,11 @@
           <Property Name="Data_Pagamento" Type="datetime" Nullable="false" />
           <Property Name="IdRecebedor" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CCN_Jogos_CCN_Adversarios">
-          <End Role="CCN_Adversarioss" Type="Self.CCN_Adversarioss" Multiplicity="1" />
+        <Association Name="FK_CCN_Jogos_CCN_Adversario">
+          <End Role="CCN_Adversarios" Type="Self.CCN_Adversarios" Multiplicity="1" />
           <End Role="CCN_Jogos" Type="Self.CCN_Jogos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CCN_Adversarioss">
+            <Principal Role="CCN_Adversarios">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CCN_Jogos">
@@ -112,15 +112,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ColaComNoisFutsalModelStoreContainer">
-          <EntitySet Name="CCN_Adversarioss" EntityType="Self.CCN_Adversarioss" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="colacomnois_StoreContainer">
+          <EntitySet Name="CCN_Adversarios" EntityType="Self.CCN_Adversarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCN_Despesas" EntityType="Self.CCN_Despesas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCN_Jogadores" EntityType="Self.CCN_Jogadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCN_Jogos" EntityType="Self.CCN_Jogos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCN_Logins" EntityType="Self.CCN_Logins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCN_Rateios" EntityType="Self.CCN_Rateios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CCN_Jogos_CCN_Adversarios" Association="Self.FK_CCN_Jogos_CCN_Adversarios">
-            <End Role="CCN_Adversarioss" EntitySet="CCN_Adversarioss" />
+          <AssociationSet Name="FK_CCN_Jogos_CCN_Adversario" Association="Self.FK_CCN_Jogos_CCN_Adversario">
+            <End Role="CCN_Adversarios" EntitySet="CCN_Adversarios" />
             <End Role="CCN_Jogos" EntitySet="CCN_Jogos" />
           </AssociationSet>
           <AssociationSet Name="FK_Despesas_Jogadores_Despesas" Association="Self.FK_Despesas_Jogadores_Despesas">
@@ -132,11 +132,10 @@
             <End Role="CCN_Rateios" EntitySet="CCN_Rateios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ColaComNoisFutsalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="colacomnois_" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CCN_Adversarios">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,7 +146,7 @@
           <Property Name="Telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nota" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CCN_Jogos" Relationship="Self.FK_CCN_Jogos_CCN_Adversarios" FromRole="CCN_Adversarioss" ToRole="CCN_Jogos" />
+          <NavigationProperty Name="CCN_Jogos" Relationship="Self.FK_CCN_Jogos_CCN_Adversario" FromRole="CCN_Adversarios" ToRole="CCN_Jogos" />
         </EntityType>
         <EntityType Name="CCN_Despesas">
           <Key>
@@ -169,9 +168,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RG" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Data_Nascimento" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Data_Admissao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Data_Demissao" Type="DateTime" Precision="3" />
+          <Property Name="Data_Nascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_Admissao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_Demissao" Type="DateTime" Precision="0" />
           <Property Name="Comissao" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="CCN_Rateios" Relationship="Self.FK_Despesas_Jogadores_Despesas_Jogadores" FromRole="CCN_Jogadores" ToRole="CCN_Rateios" />
         </EntityType>
@@ -188,7 +187,7 @@
           <Property Name="Referente" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdAdversario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CCN_Adversarioss" Relationship="Self.FK_CCN_Jogos_CCN_Adversarios" FromRole="CCN_Jogos" ToRole="CCN_Adversarioss" />
+          <NavigationProperty Name="CCN_Adversarios" Relationship="Self.FK_CCN_Jogos_CCN_Adversario" FromRole="CCN_Jogos" ToRole="CCN_Adversarios" />
         </EntityType>
         <EntityType Name="CCN_Logins">
           <Key>
@@ -214,11 +213,11 @@
           <NavigationProperty Name="CCN_Despesas" Relationship="Self.FK_Despesas_Jogadores_Despesas" FromRole="CCN_Rateios" ToRole="CCN_Despesas" />
           <NavigationProperty Name="CCN_Jogadores" Relationship="Self.FK_Despesas_Jogadores_Despesas_Jogadores" FromRole="CCN_Rateios" ToRole="CCN_Jogadores" />
         </EntityType>
-        <Association Name="FK_CCN_Jogos_CCN_Adversarios">
-          <End Role="CCN_Adversarioss" Type="ColaComNoisFutsalModel.CCN_Adversarios" Multiplicity="1" />
+        <Association Name="FK_CCN_Jogos_CCN_Adversario">
+          <End Role="CCN_Adversarios" Type="Self.CCN_Adversarios" Multiplicity="1" />
           <End Role="CCN_Jogos" Type="Self.CCN_Jogos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CCN_Adversarioss">
+            <Principal Role="CCN_Adversarios">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CCN_Jogos">
@@ -250,15 +249,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CCN_Adversarios" EntityType="ColaComNoisFutsalModel.CCN_Adversarios" />
+        <EntityContainer Name="ColaComNoisEdmx" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CCN_Adversarios" EntityType="Self.CCN_Adversarios" />
           <EntitySet Name="CCN_Despesas" EntityType="Self.CCN_Despesas" />
           <EntitySet Name="CCN_Jogadores" EntityType="Self.CCN_Jogadores" />
           <EntitySet Name="CCN_Jogos" EntityType="Self.CCN_Jogos" />
           <EntitySet Name="CCN_Logins" EntityType="Self.CCN_Logins" />
           <EntitySet Name="CCN_Rateios" EntityType="Self.CCN_Rateios" />
-          <AssociationSet Name="FK_CCN_Jogos_CCN_Adversarios" Association="Self.FK_CCN_Jogos_CCN_Adversarios">
-            <End Role="CCN_Adversarioss" EntitySet="CCN_Adversarios" />
+          <AssociationSet Name="FK_CCN_Jogos_CCN_Adversario" Association="Self.FK_CCN_Jogos_CCN_Adversario">
+            <End Role="CCN_Adversarios" EntitySet="CCN_Adversarios" />
             <End Role="CCN_Jogos" EntitySet="CCN_Jogos" />
           </AssociationSet>
           <AssociationSet Name="FK_Despesas_Jogadores_Despesas" Association="Self.FK_Despesas_Jogadores_Despesas">
@@ -275,10 +274,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ColaComNoisFutsalModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="colacomnois_StoreContainer" CdmEntityContainer="ColaComNoisEdmx">
           <EntitySetMapping Name="CCN_Adversarios">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Adversarios">
-              <MappingFragment StoreEntitySet="CCN_Adversarioss">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Adversarios">
+              <MappingFragment StoreEntitySet="CCN_Adversarios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
@@ -289,7 +288,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CCN_Despesas">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Despesas">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Despesas">
               <MappingFragment StoreEntitySet="CCN_Despesas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -302,7 +301,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CCN_Jogadores">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Jogadores">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Jogadores">
               <MappingFragment StoreEntitySet="CCN_Jogadores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -315,7 +314,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CCN_Jogos">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Jogos">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Jogos">
               <MappingFragment StoreEntitySet="CCN_Jogos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Quadro" ColumnName="Quadro" />
@@ -330,7 +329,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CCN_Logins">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Logins">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Logins">
               <MappingFragment StoreEntitySet="CCN_Logins">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -342,7 +341,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CCN_Rateios">
-            <EntityTypeMapping TypeName="ColaComNoisFutsalModel.CCN_Rateios">
+            <EntityTypeMapping TypeName="colacomnois_.CCN_Rateios">
               <MappingFragment StoreEntitySet="CCN_Rateios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdJogador" ColumnName="IdJogador" />

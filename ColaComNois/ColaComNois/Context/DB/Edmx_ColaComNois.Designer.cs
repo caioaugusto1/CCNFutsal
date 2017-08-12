@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\ColaComNoisFutsal\ColaComNois\ColaComNois\Context\DB\ColaComNoisFutsalDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Fernando\Documents\Caio Augusto\CCN_Futsal\ColaComNois\ColaComNois\Context\DB\Edmx_ColaComNois.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

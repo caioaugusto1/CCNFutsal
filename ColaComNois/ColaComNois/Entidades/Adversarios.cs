@@ -30,6 +30,7 @@ namespace ColaComNois.Entidades
         public Nota Nota { get; set; }
 
         [Display(Name = "Observação")]
+        [Required(ErrorMessage = "Por favor, coloque uma observação para a nota")]
         public string Observacao { get; set; }
     }
 

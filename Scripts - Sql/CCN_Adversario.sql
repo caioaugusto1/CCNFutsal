@@ -11,14 +11,14 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[CCN_Adversario](
+CREATE TABLE [dbo].[CCN_Adversarios](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nome] [varchar](50) NOT NULL,
 	[Responsavel] [varchar](30) NOT NULL,
 	[Telefone] [varchar](11) NOT NULL,
 	[Nota] [char](1) NOT NULL,
 	[Observacao] [varchar](250) NOT NULL,
- CONSTRAINT [PK_Adversario] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Adversarios] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]

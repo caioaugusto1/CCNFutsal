@@ -26,7 +26,6 @@ namespace ColaComNois.Entidades
         [Display(Name = "Data de Pagamento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        [Required(ErrorMessage = "Por favor, preencha a Data Pagamento")]
         public DateTime Data_Pagamento { get; set; }
 
         [Display(Name = "Status de Pagamento")]

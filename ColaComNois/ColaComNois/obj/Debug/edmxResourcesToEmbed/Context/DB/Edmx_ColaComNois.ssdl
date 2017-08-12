@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="colacomnois_.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CCN_Adversarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Responsavel" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Telefone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Nota" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Observacao" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CCN_Despesas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Data_Vencimento" Type="datetime" Nullable="false" />
+    <Property Name="Data_Pagamento" Type="datetime" />
+    <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Observacao" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CCN_Jogadores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RG" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Data_Nascimento" Type="date" Nullable="false" />
+    <Property Name="Data_Admissao" Type="date" Nullable="false" />
+    <Property Name="Data_Demissao" Type="date" />
+    <Property Name="Comissao" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CCN_Jogos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quadro" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Data" Type="date" Nullable="false" />
+    <Property Name="ResultadoColaComNois" Type="int" Nullable="false" />
+    <Property Name="ResultadoAdversario" Type="int" Nullable="false" />
+    <Property Name="Mandante" Type="bit" Nullable="false" />
+    <Property Name="Referente" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Observacao" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IdAdversario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CCN_Logins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SobreNome" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Senha" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Data_Inclusao" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CCN_Rateios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdJogador" Type="int" Nullable="false" />
+    <Property Name="IdDespesa" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Data_Pagamento" Type="datetime" Nullable="false" />
+    <Property Name="IdRecebedor" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CCN_Jogos_CCN_Adversario">
+    <End Role="CCN_Adversarios" Type="Self.CCN_Adversarios" Multiplicity="1" />
+    <End Role="CCN_Jogos" Type="Self.CCN_Jogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CCN_Adversarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CCN_Jogos">
+        <PropertyRef Name="IdAdversario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Despesas_Jogadores_Despesas">
+    <End Role="CCN_Despesas" Type="Self.CCN_Despesas" Multiplicity="1" />
+    <End Role="CCN_Rateios" Type="Self.CCN_Rateios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CCN_Despesas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CCN_Rateios">
+        <PropertyRef Name="IdDespesa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Despesas_Jogadores_Despesas_Jogadores">
+    <End Role="CCN_Jogadores" Type="Self.CCN_Jogadores" Multiplicity="1" />
+    <End Role="CCN_Rateios" Type="Self.CCN_Rateios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CCN_Jogadores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CCN_Rateios">
+        <PropertyRef Name="IdJogador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="colacomnois_StoreContainer">
+    <EntitySet Name="CCN_Adversarios" EntityType="Self.CCN_Adversarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CCN_Despesas" EntityType="Self.CCN_Despesas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CCN_Jogadores" EntityType="Self.CCN_Jogadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CCN_Jogos" EntityType="Self.CCN_Jogos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CCN_Logins" EntityType="Self.CCN_Logins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CCN_Rateios" EntityType="Self.CCN_Rateios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CCN_Jogos_CCN_Adversario" Association="Self.FK_CCN_Jogos_CCN_Adversario">
+      <End Role="CCN_Adversarios" EntitySet="CCN_Adversarios" />
+      <End Role="CCN_Jogos" EntitySet="CCN_Jogos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Despesas_Jogadores_Despesas" Association="Self.FK_Despesas_Jogadores_Despesas">
+      <End Role="CCN_Despesas" EntitySet="CCN_Despesas" />
+      <End Role="CCN_Rateios" EntitySet="CCN_Rateios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Despesas_Jogadores_Despesas_Jogadores" Association="Self.FK_Despesas_Jogadores_Despesas_Jogadores">
+      <End Role="CCN_Jogadores" EntitySet="CCN_Jogadores" />
+      <End Role="CCN_Rateios" EntitySet="CCN_Rateios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

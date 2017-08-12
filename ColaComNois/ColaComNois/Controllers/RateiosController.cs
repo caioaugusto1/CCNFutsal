@@ -25,7 +25,8 @@ namespace ColaComNois.Controllers
 
         public ActionResult Index()
         {
-            IList<Rateio> rateios = Mapper.Map<IList<CCN_Rateios>, IList<Rateio>>(_rateiosRepo.ObterTodos());
+            var rateios = Mapper.Map<IList<Rateio>>(_rateiosRepo.ObterTodos());
+            //IList<Rateio> rateios = Mapper.Map<IList<CCN_Rateios>, IList<Rateio>>(_rateiosRepo.ObterTodos());
 
             return View(rateios);
         }

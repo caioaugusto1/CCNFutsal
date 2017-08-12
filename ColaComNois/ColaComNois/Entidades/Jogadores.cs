@@ -32,6 +32,9 @@ namespace ColaComNois.Entidades
         public DateTime Data_Admissao { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name = "Data de Demissão")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime Data_Demissao { get; set; }
 
         [Display(Name = "É Comissão?")]

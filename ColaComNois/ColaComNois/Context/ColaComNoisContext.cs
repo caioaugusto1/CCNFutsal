@@ -8,7 +8,7 @@ namespace ColaComNois.Context
     public class ColaComNoisContext : DbContext
     {
         public ColaComNoisContext()
-            : base("ColaComNoisFutsalEntities")
+            : base("ColaComNoisEdmx")
         {
 
         }

@@ -8,12 +8,12 @@ namespace ColaComNois.AutoMapper
     {
         protected override void Configure()
         {
-            base.CreateMap<CCN_Jogadores, Jogadores>();
-            base.CreateMap<CCN_Despesas, Despesas>();
-            base.CreateMap<CCN_Rateios, Rateio>();
-            base.CreateMap<CCN_Logins, Login>();
-            base.CreateMap<CCN_Jogos, Jogos>();
-            base.CreateMap<CCN_Adversarios, Adversarios>();
+            CreateMap<CCN_Jogadores, Jogadores>();
+            CreateMap<CCN_Despesas, Despesas>();
+            CreateMap<CCN_Rateios, Rateio>();
+            CreateMap<CCN_Logins, Login>();
+            CreateMap<CCN_Jogos, Jogos>();
+            CreateMap<CCN_Adversarios, Adversarios>();
         }
     }
 }

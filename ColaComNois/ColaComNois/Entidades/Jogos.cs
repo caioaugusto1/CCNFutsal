@@ -32,6 +32,7 @@ namespace ColaComNois.Entidades
         public Referente Referente { get; set; }
 
         [Display(Name = "Observação")]
+        [Required(ErrorMessage = "Por favor, preencha o campo observação")]
         public string Observacao { get; set; }
 
         [Display(Name = "Adversário")]

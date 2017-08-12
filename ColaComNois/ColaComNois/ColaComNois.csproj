@@ -51,6 +51,9 @@
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -179,37 +182,37 @@
     <Compile Include="Context\ColaComNoisContext.cs" />
     <Compile Include="Context\ConnectionString.cs" />
     <Compile Include="Context\DB\CCN_Adversarios.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\DB\CCN_Despesas.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\DB\CCN_Jogadores.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\DB\CCN_Jogos.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\DB\CCN_Logins.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\DB\CCN_Rateios.cs">
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\DB\ColaComNoisFutsalDB.Context.cs">
+    <Compile Include="Context\DB\Edmx_ColaComNois.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ColaComNoisFutsalDB.Context.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\DB\ColaComNoisFutsalDB.cs">
+    <Compile Include="Context\DB\Edmx_ColaComNois.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ColaComNoisFutsalDB.tt</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\DB\ColaComNoisFutsalDB.Designer.cs">
+    <Compile Include="Context\DB\Edmx_ColaComNois.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ColaComNoisFutsalDB.edmx</DependentUpon>
+      <DependentUpon>Edmx_ColaComNois.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdversariosController.cs" />
     <Compile Include="Controllers\DespesasController.cs" />
@@ -257,15 +260,15 @@
     <Content Include="bootstrap\css\plugins\morris.css" />
     <Content Include="bootstrap\css\sb-admin-rtl.css" />
     <Content Include="bootstrap\css\sb-admin.css" />
-    <Content Include="Context\DB\ColaComNoisFutsalDB.Context.tt">
+    <Content Include="Context\DB\Edmx_ColaComNois.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ColaComNoisFutsalDB.edmx</DependentUpon>
-      <LastGenOutput>ColaComNoisFutsalDB.Context.cs</LastGenOutput>
+      <DependentUpon>Edmx_ColaComNois.edmx</DependentUpon>
+      <LastGenOutput>Edmx_ColaComNois.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Context\DB\ColaComNoisFutsalDB.tt">
+    <Content Include="Context\DB\Edmx_ColaComNois.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ColaComNoisFutsalDB.edmx</DependentUpon>
-      <LastGenOutput>ColaComNoisFutsalDB.cs</LastGenOutput>
+      <DependentUpon>Edmx_ColaComNois.edmx</DependentUpon>
+      <LastGenOutput>Edmx_ColaComNois.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="bootstrap\font-awesome\css\font-awesome.css" />
@@ -322,12 +325,12 @@
     <Content Include="bootstrap\font-awesome\scss\_spinning.scss" />
     <Content Include="bootstrap\font-awesome\scss\_stacked.scss" />
     <Content Include="bootstrap\font-awesome\scss\_variables.scss" />
-    <EntityDeploy Include="Context\DB\ColaComNoisFutsalDB.edmx">
+    <EntityDeploy Include="Context\DB\Edmx_ColaComNois.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ColaComNoisFutsalDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Edmx_ColaComNois.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Context\DB\ColaComNoisFutsalDB.edmx.diagram">
-      <DependentUpon>ColaComNoisFutsalDB.edmx</DependentUpon>
+    <Content Include="Context\DB\Edmx_ColaComNois.edmx.diagram">
+      <DependentUpon>Edmx_ColaComNois.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -383,6 +386,7 @@
     <Content Include="Views\Rateios\Edit.cshtml" />
     <Content Include="Views\Rateios\Delete.cshtml" />
     <Content Include="Views\Erro\Index.cshtml" />
+    <Content Include="Views\Adversarios\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
