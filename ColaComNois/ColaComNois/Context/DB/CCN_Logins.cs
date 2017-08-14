@@ -12,7 +12,7 @@ namespace ColaComNois.Context.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CCN_Logins
+    public partial class ccn_logins
     {
         public int Id { get; set; }
         public string Email { get; set; }

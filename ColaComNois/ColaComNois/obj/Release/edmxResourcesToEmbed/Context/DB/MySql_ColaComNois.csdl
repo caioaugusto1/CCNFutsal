@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="colacomnois_ModelMySql" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ccn_adversarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Responsavel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nota" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ccn_jogos" Relationship="Self.ccn_jogos_ibfk_1" FromRole="ccn_adversarios" ToRole="ccn_jogos" />
+  </EntityType>
+  <EntityType Name="ccn_despesas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Valor" Type="Decimal" Nullable="false" />
+    <Property Name="Data_Vencimento" Type="DateTime" Nullable="false" />
+    <Property Name="Data_Pagamento" Type="DateTime" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Observacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_despesas" ToRole="ccn_rateios" />
+  </EntityType>
+  <EntityType Name="ccn_jogadores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RG" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Data_Nascimento" Type="DateTime" Nullable="false" />
+    <Property Name="Data_Admissao" Type="DateTime" Nullable="false" />
+    <Property Name="Data_Demissao" Type="DateTime" />
+    <Property Name="Comissao" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_1" FromRole="ccn_jogadores" ToRole="ccn_rateios" />
+    <NavigationProperty Name="ccn_rateios1" Relationship="Self.ccn_rateios_ibfk_3" FromRole="ccn_jogadores" ToRole="ccn_rateios" />
+  </EntityType>
+  <EntityType Name="ccn_jogos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quadro" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" />
+    <Property Name="ResultadoColaComNois" Type="Int32" Nullable="false" />
+    <Property Name="ResultadoAdversario" Type="Int32" Nullable="false" />
+    <Property Name="Mandante" Type="SByte" Nullable="false" />
+    <Property Name="Referente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdAdversario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ccn_adversarios" Relationship="Self.ccn_jogos_ibfk_1" FromRole="ccn_jogos" ToRole="ccn_adversarios" />
+  </EntityType>
+  <EntityType Name="ccn_logins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SobreNome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Data_Inclusao" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ccn_rateios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdJogador" Type="Int32" Nullable="false" />
+    <Property Name="IdRecebedor" Type="Int32" Nullable="false" />
+    <Property Name="IdDespesa" Type="Int32" Nullable="false" />
+    <Property Name="Valor" Type="Decimal" Nullable="false" />
+    <Property Name="Data_Pagamento" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="ccn_despesas" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_rateios" ToRole="ccn_despesas" />
+    <NavigationProperty Name="ccn_jogadores" Relationship="Self.ccn_rateios_ibfk_1" FromRole="ccn_rateios" ToRole="ccn_jogadores" />
+    <NavigationProperty Name="ccn_jogadores1" Relationship="Self.ccn_rateios_ibfk_3" FromRole="ccn_rateios" ToRole="ccn_jogadores" />
+  </EntityType>
+  <Association Name="ccn_jogos_ibfk_1">
+    <End Role="ccn_adversarios" Type="Self.ccn_adversarios" Multiplicity="1" />
+    <End Role="ccn_jogos" Type="Self.ccn_jogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ccn_adversarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ccn_jogos">
+        <PropertyRef Name="IdAdversario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ccn_rateios_ibfk_2">
+    <End Role="ccn_despesas" Type="Self.ccn_despesas" Multiplicity="1" />
+    <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ccn_despesas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ccn_rateios">
+        <PropertyRef Name="IdDespesa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ccn_rateios_ibfk_1">
+    <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+    <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ccn_jogadores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ccn_rateios">
+        <PropertyRef Name="IdJogador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ccn_rateios_ibfk_3">
+    <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+    <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ccn_jogadores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ccn_rateios">
+        <PropertyRef Name="IdRecebedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MySql_ColaComNois_" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" />
+    <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" />
+    <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" />
+    <EntitySet Name="ccn_jogos" EntityType="Self.ccn_jogos" />
+    <EntitySet Name="ccn_logins" EntityType="Self.ccn_logins" />
+    <EntitySet Name="ccn_rateios" EntityType="Self.ccn_rateios" />
+    <AssociationSet Name="ccn_jogos_ibfk_1" Association="Self.ccn_jogos_ibfk_1">
+      <End Role="ccn_adversarios" EntitySet="ccn_adversarios" />
+      <End Role="ccn_jogos" EntitySet="ccn_jogos" />
+    </AssociationSet>
+    <AssociationSet Name="ccn_rateios_ibfk_2" Association="Self.ccn_rateios_ibfk_2">
+      <End Role="ccn_despesas" EntitySet="ccn_despesas" />
+      <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+    </AssociationSet>
+    <AssociationSet Name="ccn_rateios_ibfk_1" Association="Self.ccn_rateios_ibfk_1">
+      <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+      <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+    </AssociationSet>
+    <AssociationSet Name="ccn_rateios_ibfk_3" Association="Self.ccn_rateios_ibfk_3">
+      <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+      <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

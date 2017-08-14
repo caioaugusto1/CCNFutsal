@@ -21,14 +21,14 @@ namespace ColaComNois.Controllers
 
         public ActionResult Index()
         {
-            var jogosViewModel = Mapper.Map<IList<CCN_Jogos>, IList<Jogos>>(_jogosRepo.ObterTodos());
+            var jogosViewModel = Mapper.Map<IList<ccn_jogos>, IList<Jogos>>(_jogosRepo.ObterTodos());
             return View(jogosViewModel);
         }
 
         public ActionResult Details(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);
-            var jogoViewModel = Mapper.Map<CCN_Jogos, Jogos>(jogoPorId);
+            var jogoViewModel = Mapper.Map<ccn_jogos, Jogos>(jogoPorId);
 
             return View(jogoViewModel);
         }
@@ -45,7 +45,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var jogoDomain = Mapper.Map<CCN_Jogos>(jogo);
+                var jogoDomain = Mapper.Map<ccn_jogos>(jogo);
                 _jogosRepo.Adicionar(jogoDomain);
 
                 return RedirectToAction("Index");
@@ -57,7 +57,7 @@ namespace ColaComNois.Controllers
         public ActionResult Edit(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);
-            var jogoViewModel = Mapper.Map<CCN_Jogos, Jogos>(jogoPorId);
+            var jogoViewModel = Mapper.Map<ccn_jogos, Jogos>(jogoPorId);
 
             return View(jogoViewModel);
         }
@@ -67,7 +67,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var jogoDomain = Mapper.Map<Jogos, CCN_Jogos>(jogo);
+                var jogoDomain = Mapper.Map<Jogos, ccn_jogos>(jogo);
                 _jogosRepo.Editar(jogoDomain);
 
                 return RedirectToAction("Index");
@@ -81,7 +81,7 @@ namespace ColaComNois.Controllers
         public ActionResult Delete(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);
-            var jogoViewModel = Mapper.Map<CCN_Jogos, Jogos>(jogoPorId);
+            var jogoViewModel = Mapper.Map<ccn_jogos, Jogos>(jogoPorId);
 
             return View(jogoViewModel);
         }
@@ -89,7 +89,7 @@ namespace ColaComNois.Controllers
         [HttpPost]
         public ActionResult Delete(Jogos jogo)
         {
-            var jogoDomain = Mapper.Map<Jogos, CCN_Jogos>(jogo);
+            var jogoDomain = Mapper.Map<Jogos, ccn_jogos>(jogo);
             _jogosRepo.Excluir(jogoDomain.Id);
 
             return RedirectToAction("Index");

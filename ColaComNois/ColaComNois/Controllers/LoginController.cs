@@ -39,7 +39,7 @@ namespace ColaComNois.Controllers
                 else
                 {
                     ViewBag.Error = false;
-                    SessionManager.UsuarioLogado = Mapper.Map<CCN_Logins, Login>(validarAcesso);
+                    SessionManager.UsuarioLogado = Mapper.Map<ccn_logins, Login>(validarAcesso);
                     System.Web.Security.FormsAuthentication.SetAuthCookie(validarAcesso.Email, true);
 
                     return RedirectToAction("Index", "Home");

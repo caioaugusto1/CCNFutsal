@@ -12,18 +12,18 @@ namespace ColaComNois.Context.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CCN_Jogos
+    public partial class ccn_jogos
     {
         public int Id { get; set; }
         public string Quadro { get; set; }
         public System.DateTime Data { get; set; }
         public int ResultadoColaComNois { get; set; }
         public int ResultadoAdversario { get; set; }
-        public bool Mandante { get; set; }
+        public sbyte Mandante { get; set; }
         public string Referente { get; set; }
         public string Observacao { get; set; }
         public int IdAdversario { get; set; }
     
-        public virtual CCN_Adversarios CCN_Adversarios { get; set; }
+        public virtual ccn_adversarios ccn_adversarios { get; set; }
     }
 }

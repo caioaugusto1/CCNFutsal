@@ -8,27 +8,27 @@ namespace ColaComNois.Context
     public class ColaComNoisContext : DbContext
     {
         public ColaComNoisContext()
-            : base("ColaComNoisEdmx")
+            : base("MySql_ColaComNois_")
         {
 
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CCN_Rateios>().HasRequired(m => m.CCN_Despesas);
-            modelBuilder.Entity<CCN_Rateios>().HasRequired(m => m.CCN_Jogadores);
+            modelBuilder.Entity<ccn_rateios>().HasRequired(m => m.ccn_despesas);
+            modelBuilder.Entity<ccn_rateios>().HasRequired(m => m.ccn_jogadores);
 
-            modelBuilder.Entity<CCN_Jogos>().HasRequired(m => m.CCN_Adversarios);
+            modelBuilder.Entity<ccn_jogos>().HasRequired(m => m.ccn_adversarios);
 
             //base.OnModelCreating(modelBuilder);
         }
 
-        public virtual DbSet<CCN_Jogadores> Jogadores { get; set; }
-        public virtual DbSet<CCN_Despesas> Despesas { get; set; }
-        public virtual DbSet<CCN_Rateios> Rateios { get; set; }
-        public virtual DbSet<CCN_Adversarios> Adversarios { get; set; }
-        public virtual DbSet<CCN_Logins> Logins { get; set; }
-        public virtual DbSet<CCN_Jogos> Jogos { get; set; }
+        public virtual DbSet<ccn_jogadores> Jogadores { get; set; }
+        public virtual DbSet<ccn_despesas> Despesas { get; set; }
+        public virtual DbSet<ccn_rateios> Rateios { get; set; }
+        public virtual DbSet<ccn_adversarios> Adversarios { get; set; }
+        public virtual DbSet<ccn_logins> Logins { get; set; }
+        public virtual DbSet<ccn_jogos> Jogos { get; set; }
 
 
         public override int SaveChanges()

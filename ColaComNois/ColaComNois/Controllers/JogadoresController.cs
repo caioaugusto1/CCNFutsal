@@ -21,14 +21,14 @@ namespace ColaComNois.Controllers
         [Route("administrativo-listar-jogadores")]
         public ActionResult Index()
         {
-            var jogadoresViewModel = Mapper.Map<IList<CCN_Jogadores>, IList<Jogadores>>(_jogadoresRepo.ObterTodos());
+            var jogadoresViewModel = Mapper.Map<IList<ccn_jogadores>, IList<Jogadores>>(_jogadoresRepo.ObterTodos());
             return View(jogadoresViewModel);
         }
         [Route("Details/{id:id}")]
         public ActionResult Details(int id)
         {
             var jogadorPorId = _jogadoresRepo.ObterPorId(id);
-            var jogadorVieModel = Mapper.Map<CCN_Jogadores, Jogadores>(jogadorPorId);
+            var jogadorVieModel = Mapper.Map<ccn_jogadores, Jogadores>(jogadorPorId);
 
             return View(jogadorVieModel);
         }
@@ -44,7 +44,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var jogadorDomain = Mapper.Map<CCN_Jogadores>(jogador);
+                var jogadorDomain = Mapper.Map<ccn_jogadores>(jogador);
                 _jogadoresRepo.Adicionar(jogadorDomain);
 
                 return RedirectToAction("Index");
@@ -56,7 +56,7 @@ namespace ColaComNois.Controllers
         public ActionResult Edit(int id)
         {
             var jogadorPorId = _jogadoresRepo.ObterPorId(id);
-            var jogadorVieModel = Mapper.Map<CCN_Jogadores, Jogadores>(jogadorPorId);
+            var jogadorVieModel = Mapper.Map<ccn_jogadores, Jogadores>(jogadorPorId);
 
             return View(jogadorVieModel);
         }
@@ -66,7 +66,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var jogadorDomain = Mapper.Map<Jogadores, CCN_Jogadores>(jogador);
+                var jogadorDomain = Mapper.Map<Jogadores, ccn_jogadores>(jogador);
                 _jogadoresRepo.Editar(jogadorDomain);
 
                 return RedirectToAction("Index");
@@ -80,7 +80,7 @@ namespace ColaComNois.Controllers
         public ActionResult Delete(int id)
         {
             var jogador = _jogadoresRepo.ObterPorId(id);
-            var jogadorVieModel = Mapper.Map<CCN_Jogadores, Jogadores>(jogador);
+            var jogadorVieModel = Mapper.Map<ccn_jogadores, Jogadores>(jogador);
 
             return View(jogadorVieModel);
         }
@@ -88,7 +88,7 @@ namespace ColaComNois.Controllers
         [HttpPost]
         public ActionResult Delete(Jogadores jogador)
         {
-            var jogadorDomain = Mapper.Map<Jogadores, CCN_Jogadores>(jogador);
+            var jogadorDomain = Mapper.Map<Jogadores, ccn_jogadores>(jogador);
             _jogadoresRepo.Excluir(jogadorDomain.Id);
 
             return RedirectToAction("Index");

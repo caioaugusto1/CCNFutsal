@@ -9,6 +9,6 @@ namespace ColaComNois.Repository.Interfaces
 {
     public interface ILoginRepository
     {
-        CCN_Logins AutenticarAcesso(string email, string senha);
+        ccn_logins AutenticarAcesso(string email, string senha);
     }
 }

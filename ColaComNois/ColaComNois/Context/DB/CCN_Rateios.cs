@@ -12,16 +12,17 @@ namespace ColaComNois.Context.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CCN_Rateios
+    public partial class ccn_rateios
     {
         public int Id { get; set; }
         public int IdJogador { get; set; }
+        public int IdRecebedor { get; set; }
         public int IdDespesa { get; set; }
         public decimal Valor { get; set; }
         public System.DateTime Data_Pagamento { get; set; }
-        public string IdRecebedor { get; set; }
     
-        public virtual CCN_Despesas CCN_Despesas { get; set; }
-        public virtual CCN_Jogadores CCN_Jogadores { get; set; }
+        public virtual ccn_despesas ccn_despesas { get; set; }
+        public virtual ccn_jogadores ccn_jogadores { get; set; }
+        public virtual ccn_jogadores ccn_jogadores1 { get; set; }
     }
 }

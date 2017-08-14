@@ -20,14 +20,14 @@ namespace ColaComNois.Controllers
 
         public ActionResult Index()
         {
-            var despesasViewModel = Mapper.Map<IList<CCN_Despesas>, IList<Despesas>>(_despesasRepo.ObterTodos());
+            var despesasViewModel = Mapper.Map<IList<ccn_despesas>, IList<Despesas>>(_despesasRepo.ObterTodos());
             return View(despesasViewModel);
         }
 
         public ActionResult Details(int id)
         {
             var despesaPorId = _despesasRepo.ObterPorId(id);
-            var despesasVieModel = Mapper.Map<CCN_Despesas, Despesas>(despesaPorId);
+            var despesasVieModel = Mapper.Map<ccn_despesas, Despesas>(despesaPorId);
 
             return View(despesasVieModel);
         }
@@ -43,7 +43,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var despesaDomain = Mapper.Map<CCN_Despesas>(despesa);
+                var despesaDomain = Mapper.Map<ccn_despesas>(despesa);
                 _despesasRepo.Adicionar(despesaDomain);
 
                 return RedirectToAction("Index");
@@ -57,7 +57,7 @@ namespace ColaComNois.Controllers
         public ActionResult Edit(int id)
         {
             var despesaPorId = _despesasRepo.ObterPorId(id);
-            var despesaViewModel = Mapper.Map<CCN_Despesas, Despesas>(despesaPorId);
+            var despesaViewModel = Mapper.Map<ccn_despesas, Despesas>(despesaPorId);
 
             return View(despesaViewModel);
         }
@@ -67,7 +67,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var despesaDomain = Mapper.Map<Despesas, CCN_Despesas>(despesa);
+                var despesaDomain = Mapper.Map<Despesas, ccn_despesas>(despesa);
                 _despesasRepo.Editar(despesaDomain);
 
                 return RedirectToAction("Index");
@@ -81,7 +81,7 @@ namespace ColaComNois.Controllers
         public ActionResult Delete(int id)
         {
             var despesa = _despesasRepo.ObterPorId(id);
-            var despesaViewModel = Mapper.Map<CCN_Despesas, Despesas>(despesa);
+            var despesaViewModel = Mapper.Map<ccn_despesas, Despesas>(despesa);
 
             return View(despesaViewModel);
         }
@@ -89,7 +89,7 @@ namespace ColaComNois.Controllers
         [HttpPost]
         public ActionResult Delete(Despesas despesa)
         {
-            var despesaDomain = Mapper.Map<Despesas, CCN_Despesas>(despesa);
+            var despesaDomain = Mapper.Map<Despesas, ccn_despesas>(despesa);
             _despesasRepo.Excluir(despesaDomain.Id);
 
             return RedirectToAction("Index");

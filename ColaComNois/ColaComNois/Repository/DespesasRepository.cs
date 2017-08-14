@@ -6,7 +6,7 @@ using System;
 
 namespace ColaComNois.Repository
 {
-    public class DespesasRepository : RepositoryBase<CCN_Despesas>
+    public class DespesasRepository : RepositoryBase<ccn_despesas>
     {
         public DespesasRepository(ColaComNoisContext context)
             : base(context)

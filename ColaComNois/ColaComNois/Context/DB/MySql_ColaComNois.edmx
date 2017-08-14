@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="colacomnois_ModelMySql.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ccn_adversarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Responsavel" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telefone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Nota" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Observacao" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ccn_despesas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Data_Vencimento" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Data_Pagamento" Type="datetime" Precision="0" />
+          <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Observacao" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ccn_jogadores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RG" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Data_Nascimento" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Data_Admissao" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Data_Demissao" Type="datetime" Precision="0" />
+          <Property Name="Comissao" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ccn_jogos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quadro" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="ResultadoColaComNois" Type="int" Nullable="false" />
+          <Property Name="ResultadoAdversario" Type="int" Nullable="false" />
+          <Property Name="Mandante" Type="tinyint" Nullable="false" />
+          <Property Name="Referente" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Observacao" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdAdversario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ccn_logins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SobreNome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data_Inclusao" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ccn_rateios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdJogador" Type="int" Nullable="false" />
+          <Property Name="IdRecebedor" Type="int" Nullable="false" />
+          <Property Name="IdDespesa" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Data_Pagamento" Type="datetime" Precision="3" Nullable="false" />
+        </EntityType>
+        <Association Name="ccn_jogos_ibfk_1">
+          <End Role="ccn_adversarios" Type="Self.ccn_adversarios" Multiplicity="1" />
+          <End Role="ccn_jogos" Type="Self.ccn_jogos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_adversarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_jogos">
+              <PropertyRef Name="IdAdversario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_1">
+          <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_jogadores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdJogador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_2">
+          <End Role="ccn_despesas" Type="Self.ccn_despesas" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_despesas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdDespesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_3">
+          <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_jogadores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdRecebedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="colacomnois_ModelMySqlStoreContainer">
+          <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" Schema="colacomnois_" store:Type="Tables" />
+          <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" Schema="colacomnois_" store:Type="Tables" />
+          <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" Schema="colacomnois_" store:Type="Tables" />
+          <EntitySet Name="ccn_jogos" EntityType="Self.ccn_jogos" Schema="colacomnois_" store:Type="Tables" />
+          <EntitySet Name="ccn_logins" EntityType="Self.ccn_logins" Schema="colacomnois_" store:Type="Tables" />
+          <EntitySet Name="ccn_rateios" EntityType="Self.ccn_rateios" Schema="colacomnois_" store:Type="Tables" />
+          <AssociationSet Name="ccn_jogos_ibfk_1" Association="Self.ccn_jogos_ibfk_1">
+            <End Role="ccn_adversarios" EntitySet="ccn_adversarios" />
+            <End Role="ccn_jogos" EntitySet="ccn_jogos" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_1" Association="Self.ccn_rateios_ibfk_1">
+            <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_2" Association="Self.ccn_rateios_ibfk_2">
+            <End Role="ccn_despesas" EntitySet="ccn_despesas" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_3" Association="Self.ccn_rateios_ibfk_3">
+            <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="colacomnois_ModelMySql" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ccn_adversarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Responsavel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nota" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ccn_jogos" Relationship="Self.ccn_jogos_ibfk_1" FromRole="ccn_adversarios" ToRole="ccn_jogos" />
+        </EntityType>
+        <EntityType Name="ccn_despesas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" />
+          <Property Name="Data_Vencimento" Type="DateTime" Nullable="false" />
+          <Property Name="Data_Pagamento" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_despesas" ToRole="ccn_rateios" />
+        </EntityType>
+        <EntityType Name="ccn_jogadores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RG" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_Nascimento" Type="DateTime" Nullable="false" />
+          <Property Name="Data_Admissao" Type="DateTime" Nullable="false" />
+          <Property Name="Data_Demissao" Type="DateTime" />
+          <Property Name="Comissao" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_1" FromRole="ccn_jogadores" ToRole="ccn_rateios" />
+          <NavigationProperty Name="ccn_rateios1" Relationship="Self.ccn_rateios_ibfk_3" FromRole="ccn_jogadores" ToRole="ccn_rateios" />
+        </EntityType>
+        <EntityType Name="ccn_jogos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quadro" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
+          <Property Name="ResultadoColaComNois" Type="Int32" Nullable="false" />
+          <Property Name="ResultadoAdversario" Type="Int32" Nullable="false" />
+          <Property Name="Mandante" Type="SByte" Nullable="false" />
+          <Property Name="Referente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAdversario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ccn_adversarios" Relationship="Self.ccn_jogos_ibfk_1" FromRole="ccn_jogos" ToRole="ccn_adversarios" />
+        </EntityType>
+        <EntityType Name="ccn_logins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SobreNome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_Inclusao" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ccn_rateios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdJogador" Type="Int32" Nullable="false" />
+          <Property Name="IdRecebedor" Type="Int32" Nullable="false" />
+          <Property Name="IdDespesa" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" />
+          <Property Name="Data_Pagamento" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ccn_despesas" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_rateios" ToRole="ccn_despesas" />
+          <NavigationProperty Name="ccn_jogadores" Relationship="Self.ccn_rateios_ibfk_1" FromRole="ccn_rateios" ToRole="ccn_jogadores" />
+          <NavigationProperty Name="ccn_jogadores1" Relationship="Self.ccn_rateios_ibfk_3" FromRole="ccn_rateios" ToRole="ccn_jogadores" />
+        </EntityType>
+        <Association Name="ccn_jogos_ibfk_1">
+          <End Role="ccn_adversarios" Type="Self.ccn_adversarios" Multiplicity="1" />
+          <End Role="ccn_jogos" Type="Self.ccn_jogos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_adversarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_jogos">
+              <PropertyRef Name="IdAdversario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_2">
+          <End Role="ccn_despesas" Type="Self.ccn_despesas" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_despesas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdDespesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_1">
+          <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_jogadores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdJogador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ccn_rateios_ibfk_3">
+          <End Role="ccn_jogadores" Type="Self.ccn_jogadores" Multiplicity="1" />
+          <End Role="ccn_rateios" Type="Self.ccn_rateios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ccn_jogadores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ccn_rateios">
+              <PropertyRef Name="IdRecebedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MySql_ColaComNois_" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" />
+          <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" />
+          <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" />
+          <EntitySet Name="ccn_jogos" EntityType="Self.ccn_jogos" />
+          <EntitySet Name="ccn_logins" EntityType="Self.ccn_logins" />
+          <EntitySet Name="ccn_rateios" EntityType="Self.ccn_rateios" />
+          <AssociationSet Name="ccn_jogos_ibfk_1" Association="Self.ccn_jogos_ibfk_1">
+            <End Role="ccn_adversarios" EntitySet="ccn_adversarios" />
+            <End Role="ccn_jogos" EntitySet="ccn_jogos" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_2" Association="Self.ccn_rateios_ibfk_2">
+            <End Role="ccn_despesas" EntitySet="ccn_despesas" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_1" Association="Self.ccn_rateios_ibfk_1">
+            <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+          <AssociationSet Name="ccn_rateios_ibfk_3" Association="Self.ccn_rateios_ibfk_3">
+            <End Role="ccn_jogadores" EntitySet="ccn_jogadores" />
+            <End Role="ccn_rateios" EntitySet="ccn_rateios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="colacomnois_ModelMySqlStoreContainer" CdmEntityContainer="MySql_ColaComNois_">
+          <EntitySetMapping Name="ccn_adversarios">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_adversarios">
+              <MappingFragment StoreEntitySet="ccn_adversarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Responsavel" ColumnName="Responsavel" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ccn_despesas">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_despesas">
+              <MappingFragment StoreEntitySet="ccn_despesas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Data_Vencimento" ColumnName="Data_Vencimento" />
+                <ScalarProperty Name="Data_Pagamento" ColumnName="Data_Pagamento" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ccn_jogadores">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogadores">
+              <MappingFragment StoreEntitySet="ccn_jogadores">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="Data_Nascimento" ColumnName="Data_Nascimento" />
+                <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+                <ScalarProperty Name="Data_Demissao" ColumnName="Data_Demissao" />
+                <ScalarProperty Name="Comissao" ColumnName="Comissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ccn_jogos">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogos">
+              <MappingFragment StoreEntitySet="ccn_jogos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Quadro" ColumnName="Quadro" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ResultadoColaComNois" ColumnName="ResultadoColaComNois" />
+                <ScalarProperty Name="ResultadoAdversario" ColumnName="ResultadoAdversario" />
+                <ScalarProperty Name="Mandante" ColumnName="Mandante" />
+                <ScalarProperty Name="Referente" ColumnName="Referente" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="IdAdversario" ColumnName="IdAdversario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ccn_logins">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_logins">
+              <MappingFragment StoreEntitySet="ccn_logins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="SobreNome" ColumnName="SobreNome" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ccn_rateios">
+            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_rateios">
+              <MappingFragment StoreEntitySet="ccn_rateios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdJogador" ColumnName="IdJogador" />
+                <ScalarProperty Name="IdRecebedor" ColumnName="IdRecebedor" />
+                <ScalarProperty Name="IdDespesa" ColumnName="IdDespesa" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Data_Pagamento" ColumnName="Data_Pagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

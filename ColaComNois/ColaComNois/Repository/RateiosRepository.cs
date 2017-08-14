@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ColaComNois.Repository
 {
-    public class RateiosRepository : RepositoryBase<CCN_Rateios>
+    public class RateiosRepository : RepositoryBase<ccn_rateios>
     {
         string connectionString = ConnectionString.Connection();
 
@@ -15,10 +15,10 @@ namespace ColaComNois.Repository
 
         }
 
-        public override IList<CCN_Rateios> ObterTodos()
+        public override IList<ccn_rateios> ObterTodos()
         {
             return _context.Rateios.OrderBy(r => r.Data_Pagamento)
-                .ThenBy(r => r.CCN_Jogadores.Nome)
+                .ThenBy(r => r.ccn_jogadores.Nome)
                 .ToList();
         }
 
@@ -27,11 +27,11 @@ namespace ColaComNois.Repository
         //    using (SqlConnection connSql = new SqlConnection(connectionString))
         //    {
         //        SqlCommand cmdSql = new SqlCommand("select CCN_Rateios.Id, CCN_Rateios.Valor, CCN_Rateios.Data_Pagamento, " +
-        //        "CCN_Jogadores.Id, CCN_Jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome " +
-        //        "from CCN_Rateios inner join CCN_Jogadores on CCN_Jogadores.Id = IdJogador " +
+        //        "ccn_jogadores.Id, ccn_jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome " +
+        //        "from CCN_Rateios inner join ccn_jogadores on ccn_jogadores.Id = IdJogador " +
         //        "inner join CCN_Despesas on CCN_Despesas.Id = IdDespesa order by JogadorNome " +
-        //        "select CCN_Jogadores.Nome as RecebedorNome from CCN_Jogadores inner join CCN_Rateios " +
-        //        " on CCN_Jogadores.Id = CCN_Rateios.IdRecebedor", connSql);
+        //        "select ccn_jogadores.Nome as RecebedorNome from ccn_jogadores inner join CCN_Rateios " +
+        //        " on ccn_jogadores.Id = CCN_Rateios.IdRecebedor", connSql);
 
         //        connSql.Open();
 
@@ -65,11 +65,11 @@ namespace ColaComNois.Repository
         //public override IList<CCN_Rateios> ObterTodos()
         //{
         //    var sql = "select CCN_Rateios.Id, CCN_Rateios.Valor, CCN_Rateios.Data_Pagamento" +
-        //        "CCN_Jogadores.Id, CCN_Jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome from CCN_Rateios " +
-        //        "inner join CCN_Jogadores on CCN_Jogadores.Id = IdJogador " +
+        //        "ccn_jogadores.Id, ccn_jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome from CCN_Rateios " +
+        //        "inner join ccn_jogadores on ccn_jogadores.Id = IdJogador " +
         //        "inner join CCN_Despesas on CCN_Despesas.Id = IdDespesa order by JogadorNome" +
-        //        "select CCN_Jogadores.Nome as RecebedorNome from CCN_Jogadores inner join CCN_Rateios" +
-        //        "on CCN_Jogadores.Id = CCN_Rateios.IdRecebedor";
+        //        "select ccn_jogadores.Nome as RecebedorNome from ccn_jogadores inner join CCN_Rateios" +
+        //        "on ccn_jogadores.Id = CCN_Rateios.IdRecebedor";
 
         //    return _context.Database.Connection.Query<CCN_Rateios>(sql)
         //        .OrderBy(c => c.Data_Pagamento)

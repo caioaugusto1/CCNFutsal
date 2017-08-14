@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace ColaComNois.Repository
 {
-    public class JogosRepository : RepositoryBase<CCN_Jogos>
+    public class JogosRepository : RepositoryBase<ccn_jogos>
     {
         public JogosRepository(ColaComNoisContext context) : base(context)
         {
         }
 
-        public override IList<CCN_Jogos> ObterTodos()
+        public override IList<ccn_jogos> ObterTodos()
         {
             return _context.Jogos.OrderBy(j => j.Data).ToList();
         }

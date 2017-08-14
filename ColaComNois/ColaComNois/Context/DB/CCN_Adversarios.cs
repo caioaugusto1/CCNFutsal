@@ -12,12 +12,12 @@ namespace ColaComNois.Context.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CCN_Adversarios
+    public partial class ccn_adversarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CCN_Adversarios()
+        public ccn_adversarios()
         {
-            this.CCN_Jogos = new HashSet<CCN_Jogos>();
+            this.ccn_jogos = new HashSet<ccn_jogos>();
         }
     
         public int Id { get; set; }
@@ -28,6 +28,6 @@ namespace ColaComNois.Context.DB
         public string Observacao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CCN_Jogos> CCN_Jogos { get; set; }
+        public virtual ICollection<ccn_jogos> ccn_jogos { get; set; }
     }
 }

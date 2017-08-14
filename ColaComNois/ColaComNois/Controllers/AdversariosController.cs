@@ -20,14 +20,14 @@ namespace ColaComNois.Controllers
 
         public ActionResult Index()
         {
-            var adversarioViewModel = Mapper.Map<IList<CCN_Adversarios>, IList<Adversarios>>(_adversarioRepo.ObterTodos());
+            var adversarioViewModel = Mapper.Map<IList<ccn_adversarios>, IList<Adversarios>>(_adversarioRepo.ObterTodos());
             return View(adversarioViewModel);
         }
 
         public ActionResult Details(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);
-            var adversarioViewModel = Mapper.Map<CCN_Adversarios, Adversarios>(adversarioPorId);
+            var adversarioViewModel = Mapper.Map<ccn_adversarios, Adversarios>(adversarioPorId);
 
             return View(adversarioViewModel);
         }
@@ -43,7 +43,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adversarioDomain = Mapper.Map<CCN_Adversarios>(adversario);
+                var adversarioDomain = Mapper.Map<ccn_adversarios>(adversario);
                 _adversarioRepo.Adicionar(adversarioDomain);
 
                 return RedirectToAction("Index");
@@ -55,7 +55,7 @@ namespace ColaComNois.Controllers
         public ActionResult Edit(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);
-            var adversarioViewModel = Mapper.Map<CCN_Adversarios, Adversarios>(adversarioPorId);
+            var adversarioViewModel = Mapper.Map<ccn_adversarios, Adversarios>(adversarioPorId);
 
             return View(adversarioViewModel);
         }
@@ -65,7 +65,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adversarioDomain = Mapper.Map<Adversarios, CCN_Adversarios>(adversario);
+                var adversarioDomain = Mapper.Map<Adversarios, ccn_adversarios>(adversario);
                 _adversarioRepo.Editar(adversarioDomain);
 
                 return RedirectToAction("Index");
@@ -79,7 +79,7 @@ namespace ColaComNois.Controllers
         public ActionResult Delete(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);
-            var adversarioViewModel = Mapper.Map<CCN_Adversarios, Adversarios>(adversarioPorId);
+            var adversarioViewModel = Mapper.Map<ccn_adversarios, Adversarios>(adversarioPorId);
 
             return View(adversarioViewModel);
         }
@@ -87,7 +87,7 @@ namespace ColaComNois.Controllers
         [HttpPost]
         public ActionResult Delete(Adversarios adversario)
         {
-            var adversarioDomain = Mapper.Map<Adversarios, CCN_Adversarios>(adversario);
+            var adversarioDomain = Mapper.Map<Adversarios, ccn_adversarios>(adversario);
             _adversarioRepo.Excluir(adversarioDomain.Id);
 
             return RedirectToAction("Index");

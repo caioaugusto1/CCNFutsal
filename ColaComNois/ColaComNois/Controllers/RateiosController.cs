@@ -34,7 +34,7 @@ namespace ColaComNois.Controllers
         public ActionResult Details(int id)
         {
             var rateioPorId = _rateiosRepo.ObterPorId(id);
-            var rateioViewModel = Mapper.Map<CCN_Rateios, Rateio>(rateioPorId);
+            var rateioViewModel = Mapper.Map<ccn_rateios, Rateio>(rateioPorId);
 
             ViewBag.Jogadores = _jogadoresRepo.ObterPorId(rateioPorId.IdJogador);
             ViewBag.Despesas = _despesasRepo.ObterPorId(rateioPorId.IdDespesa);
@@ -45,7 +45,7 @@ namespace ColaComNois.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Jogadores = _jogadoresRepo.ObterTodos();
+            ViewBag.Jogadores = _jogadoresRepo.ObterAtivos();
             ViewBag.Despesas = _despesasRepo.ObterTodos();
             ViewBag.Recebedor = _jogadoresRepo.ObterComissao();
 
@@ -57,7 +57,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var rateiosDomain = Mapper.Map<CCN_Rateios>(rateio);
+                var rateiosDomain = Mapper.Map<ccn_rateios>(rateio);
                 _rateiosRepo.Adicionar(rateiosDomain);
 
                 return RedirectToAction("Index");
@@ -71,7 +71,7 @@ namespace ColaComNois.Controllers
         public ActionResult Edit(int id)
         {
             var despesaJogadorPorId = _rateiosRepo.ObterPorId(id);
-            var despesaJogadoViewModel = Mapper.Map<CCN_Rateios, Rateio>(despesaJogadorPorId);
+            var despesaJogadoViewModel = Mapper.Map<ccn_rateios, Rateio>(despesaJogadorPorId);
 
             ViewBag.Jogadores = _jogadoresRepo.ObterTodos();
             ViewBag.Despesas = _despesasRepo.ObterTodos();
@@ -85,7 +85,7 @@ namespace ColaComNois.Controllers
         {
             if (ModelState.IsValid)
             {
-                var rateioDomain = Mapper.Map<Rateio, CCN_Rateios>(rateio);
+                var rateioDomain = Mapper.Map<Rateio, ccn_rateios>(rateio);
                 _rateiosRepo.Editar(rateioDomain);
 
                 return RedirectToAction("Index");
@@ -99,7 +99,7 @@ namespace ColaComNois.Controllers
         public ActionResult Delete(int id)
         {
             var rateioPorId = _rateiosRepo.ObterPorId(id);
-            var rateioViewModel = Mapper.Map<CCN_Rateios, Rateio>(rateioPorId);
+            var rateioViewModel = Mapper.Map<ccn_rateios, Rateio>(rateioPorId);
             ViewBag.Jogadores = _jogadoresRepo.ObterPorId(rateioPorId.IdJogador);
 
             ViewBag.Despesas = _despesasRepo.ObterPorId(rateioPorId.IdDespesa);
