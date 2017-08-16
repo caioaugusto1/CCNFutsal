@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("administrativo")]
     public class JogosController : Controller
     {
         private JogosRepository _jogosRepo;
@@ -19,12 +20,14 @@ namespace ColaComNois.Controllers
             this._adversarioRepo = _adversarioRepo;
         }
 
+        [Route("listar-jogos")]
         public ActionResult Index()
         {
             var jogosViewModel = Mapper.Map<IList<ccn_jogos>, IList<Jogos>>(_jogosRepo.ObterTodos());
             return View(jogosViewModel);
         }
 
+        [Route("{id:int}/detalhe-jogos")]
         public ActionResult Details(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);
@@ -33,6 +36,7 @@ namespace ColaComNois.Controllers
             return View(jogoViewModel);
         }
 
+        [Route("cadastrar-jogo")]
         public ActionResult Create()
         {
             ViewBag.Adversarios = _adversarioRepo.ObterTodos();
@@ -54,6 +58,7 @@ namespace ColaComNois.Controllers
             return View(jogo);
         }
 
+        [Route("{id:int}/editar-jogo")]
         public ActionResult Edit(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);
@@ -78,6 +83,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/deletar-jogo")]
         public ActionResult Delete(int id)
         {
             var jogoPorId = _jogosRepo.ObterPorId(id);

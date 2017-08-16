@@ -250,7 +250,34 @@
     <Compile Include="Repository\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap\css\fullcalendar.css" />
     <Content Include="bootstrap\css\login\login.min.css" />
+    <Content Include="bootstrap\css\main.css" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap\icomoon\fonts\icomoon.svg" />
+    <Content Include="bootstrap\icomoon\style.css" />
+    <Content Include="bootstrap\img\avatar-1.png" />
+    <Content Include="bootstrap\img\avatar-2.png" />
+    <Content Include="bootstrap\img\avatar-3.png" />
+    <Content Include="bootstrap\img\avatar-4.png" />
+    <Content Include="bootstrap\img\avatar-5.png" />
+    <Content Include="bootstrap\img\avatar-6.png" />
+    <Content Include="bootstrap\img\avatar-7.png" />
+    <Content Include="bootstrap\img\avatar-8.png" />
+    <Content Include="bootstrap\img\ccn.png" />
+    <Content Include="bootstrap\img\edit-icon.png" />
+    <Content Include="bootstrap\img\female.png" />
+    <Content Include="bootstrap\img\logo.png" />
+    <Content Include="bootstrap\img\male.png" />
+    <Content Include="bootstrap\img\sorting.png" />
+    <Content Include="bootstrap\img\sorting_asc.png" />
+    <Content Include="bootstrap\img\sorting_desc.png" />
+    <Content Include="bootstrap\img\trash-icon.png" />
+    <Content Include="bootstrap\js\custom-index.js" />
+    <Content Include="bootstrap\js\custom.js" />
+    <Content Include="bootstrap\js\html5-trunk.js" />
+    <Content Include="bootstrap\js\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="bootstrap\js\jquery.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="bootstrap\css\bootstrap-rtl.css" />
@@ -271,9 +298,6 @@
       <LastGenOutput>MySql_ColaComNois.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="bootstrap\font-awesome\css\font-awesome.css" />
-    <Content Include="bootstrap\font-awesome\css\font-awesome.min.css" />
-    <Content Include="bootstrap\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -295,36 +319,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="bootstrap\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="bootstrap\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="bootstrap\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="bootstrap\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="bootstrap\font-awesome\less\bordered-pulled.less" />
-    <Content Include="bootstrap\font-awesome\less\core.less" />
-    <Content Include="bootstrap\font-awesome\less\fixed-width.less" />
-    <Content Include="bootstrap\font-awesome\less\font-awesome.less" />
-    <Content Include="bootstrap\font-awesome\less\icons.less" />
-    <Content Include="bootstrap\font-awesome\less\larger.less" />
-    <Content Include="bootstrap\font-awesome\less\list.less" />
-    <Content Include="bootstrap\font-awesome\less\mixins.less" />
-    <Content Include="bootstrap\font-awesome\less\path.less" />
-    <Content Include="bootstrap\font-awesome\less\rotated-flipped.less" />
-    <Content Include="bootstrap\font-awesome\less\spinning.less" />
-    <Content Include="bootstrap\font-awesome\less\stacked.less" />
-    <Content Include="bootstrap\font-awesome\less\variables.less" />
-    <Content Include="bootstrap\font-awesome\scss\font-awesome.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_core.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_icons.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_larger.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_list.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_mixins.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_path.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_spinning.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_stacked.scss" />
-    <Content Include="bootstrap\font-awesome\scss\_variables.scss" />
     <EntityDeploy Include="Context\DB\MySql_ColaComNois.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MySql_ColaComNois.Designer.cs</LastGenOutput>
@@ -332,6 +326,15 @@
     <Content Include="Context\DB\MySql_ColaComNois.edmx.diagram">
       <DependentUpon>MySql_ColaComNois.edmx</DependentUpon>
     </Content>
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="bootstrap\icomoon\fonts\icomoon.eot" />
+    <Content Include="bootstrap\icomoon\fonts\icomoon.ttf" />
+    <Content Include="bootstrap\icomoon\fonts\icomoon.woff" />
+    <Content Include="bootstrap\icomoon\fonts\icomoond41d.eot" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
@@ -390,6 +393,8 @@
     <Content Include="Views\Rateios\Delete.cshtml" />
     <Content Include="Views\Erro\Index.cshtml" />
     <Content Include="Views\Adversarios\Delete.cshtml" />
+    <Content Include="Views\Shared\_partial\_menus.cshtml" />
+    <Content Include="Views\Shared\_partial\_header_bootstrap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,7 +436,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>11076</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:11076/</IISUrl>
+          <IISUrl>http://localhost:8008/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

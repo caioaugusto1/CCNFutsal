@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace ColaComNois.Controllers
 {
-    [RoutePrefix("cola-com-nois-login")]
     public class LoginController : Controller
     {
         private LoginRepository _loginRepo;

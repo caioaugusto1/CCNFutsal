@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("administrativo")]
     public class AdversariosController : Controller
     {
         private AdversariosRepository _adversarioRepo;
@@ -18,12 +19,14 @@ namespace ColaComNois.Controllers
             this._adversarioRepo = _adversarioRepo;
         }
 
+        [Route("listar-adversarios")]
         public ActionResult Index()
         {
             var adversarioViewModel = Mapper.Map<IList<ccn_adversarios>, IList<Adversarios>>(_adversarioRepo.ObterTodos());
             return View(adversarioViewModel);
         }
 
+        [Route("{id:int}/detalhe-adversario")]
         public ActionResult Details(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);
@@ -32,6 +35,7 @@ namespace ColaComNois.Controllers
             return View(adversarioViewModel);
         }
 
+        [Route("cadastrar-adversario")]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +56,7 @@ namespace ColaComNois.Controllers
             return View(adversario);
         }
 
+        [Route("{id:int}/editar-adversario")]
         public ActionResult Edit(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);
@@ -76,6 +81,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/deletar-adversario")]
         public ActionResult Delete(int id)
         {
             var adversarioPorId = _adversarioRepo.ObterPorId(id);

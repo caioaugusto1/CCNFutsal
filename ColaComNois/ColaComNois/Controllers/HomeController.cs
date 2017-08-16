@@ -5,8 +5,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("pagina-principal")]
-    [Route("{action=principal}")]
+    [RoutePrefix("pagina-principal-cola-com-nois")]
     public class HomeController : Controller
     {
         private DespesasRepository _despesasRepo;
@@ -16,7 +15,7 @@ namespace ColaComNois.Controllers
             this._despesasRepo = _despesasRepo;
         }
 
-        [Route("home-princiapl")]
+        [Route("home")]
         public ActionResult Index()
         {
             ViewBag.ContarDespesas = _despesasRepo.ObterTodos().Count;

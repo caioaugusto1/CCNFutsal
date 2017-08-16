@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("administrativo")]
     public class DespesasController : Controller
     {
         private DespesasRepository _despesasRepo;
@@ -18,12 +19,14 @@ namespace ColaComNois.Controllers
             this._despesasRepo = _despesasRepo;
         }
 
+        [Route("listar-despesas")]
         public ActionResult Index()
         {
             var despesasViewModel = Mapper.Map<IList<ccn_despesas>, IList<Despesas>>(_despesasRepo.ObterTodos());
             return View(despesasViewModel);
         }
 
+        [Route("{id:int}/detalhe-despesa")]
         public ActionResult Details(int id)
         {
             var despesaPorId = _despesasRepo.ObterPorId(id);
@@ -32,6 +35,7 @@ namespace ColaComNois.Controllers
             return View(despesasVieModel);
         }
 
+        [Route("cadastrar-despesa")]
         public ActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/editar-despesa")]
         public ActionResult Edit(int id)
         {
             var despesaPorId = _despesasRepo.ObterPorId(id);
@@ -78,6 +83,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/deletar-despesa")]
         public ActionResult Delete(int id)
         {
             var despesa = _despesasRepo.ObterPorId(id);

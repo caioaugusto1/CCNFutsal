@@ -16,7 +16,7 @@ namespace ColaComNois.Repository
 
         public IList<ccn_jogadores> ObterAtivos()
         {
-            return ObterTodos().Where(j => j.Data_Admissao != null).ToList();
+            return ObterTodos().Where(j => !j.Data_Demissao.HasValue).ToList();
         }
 
         public IList<ccn_jogadores> ObterComissao()

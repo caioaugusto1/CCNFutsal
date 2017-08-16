@@ -1,39 +1,148 @@
-﻿@{
-    ViewBag.Title = "Page - Princípal";
-}
-
-<div class="col-lg-3 col-md-6">
-    <div class="panel panel-yellow">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-3">
-                    <i class="fa fa-shopping-cart fa-5x"></i>
+﻿<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Slick Dashboard
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Dashboard</li>
+                    <li>/</li>
+                    <li>Charts</li>
+                </ul>
+            </small>
+        </h2>
+        <ul class="stats hidden-xs">
+            <li class="ruby-red-bg">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe042;"></span>
+                <div class="details">
+                    <span class="big">São Paulo</span>
+                    <span class="small">C.D.C - Campo do Sabão</span>
                 </div>
-                <div class="col-xs-9 text-right">
-                    <div class="huge">@ViewBag.ContarDespesas</div>
-                    <div>Despesas no mês!</div>
+            </li>
+            <li class="light-grey-bg">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe037;"></span>
+                <div class="details">
+                    <span class="big">$7589</span>
+                    <span class="small">R$ Despesas</span>
+                </div>
+            </li>
+            <li class="ruby-red-bg">
+                <span id="currentSale" class="graph"><canvas width="53" height="30" style="display: inline-block; width: 53px; height: 30px; vertical-align: top;"></canvas></span>
+                <div class="details">
+                    <span class="big">$8,597</span>
+                    <span class="small">R$ Arrecadado</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe096;"></span> Informativo 
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <!-- Span4 start -->
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <div class="title">
+                                        <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Traffic Report
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <table class="table table-condensed table-bordered table-hover no-margin">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:60%">
+                                                    Daily Uinque Visitors
+                                                </td>
+                                                <td style="width:40%">
+                                                    <span class="label label-danger">
+                                                        390
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Daily Pageviews
+                                                </td>
+                                                <td>
+                                                    <span class="label label-info">
+                                                        5,229
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Weekly Pageviews
+                                                </td>
+                                                <td>
+                                                    <span class="label label-success">
+                                                        28,123
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <div class="title">
+                                        <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Arrecadação Estimada
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <table class="table table-condensed table-bordered table-hover no-margin">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:60%">
+                                                    Income per day
+                                                </td>
+                                                <td style="width:40%">
+                                                    <span class="label label-success">
+                                                        $312.00
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Income per week
+                                                </td>
+                                                <td>
+                                                    <span class="label label-warning">
+                                                        $2,660.00
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Estimated Worth
+                                                </td>
+                                                <td>
+                                                    <span class="label label-info">
+                                                        $22,660.00
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="@Url.Action("Index", "Despesas")">
-            <div class="panel-footer">
-                <span class="pull-left">Ver Detalhes</span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
-        </a>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> ESTASTÍSTICA DE DESPESAS</h3>
-            </div>
-            <div class="panel-body">
-                <div id="morris-area-chart"></div>
-            </div>
-        </div>
-    </div>
-</div>

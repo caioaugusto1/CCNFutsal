@@ -3,14 +3,13 @@ using ColaComNois.Context.DB;
 using ColaComNois.Entidades;
 using ColaComNois.Filters;
 using ColaComNois.Repository;
-using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("administrativo-jogadores")]
+    [RoutePrefix("administrativo")]
     public class JogadoresController : Controller
     {
         private JogadoresRepository _jogadoresRepo;
@@ -18,13 +17,15 @@ namespace ColaComNois.Controllers
         {
             this._jogadoresRepo = _jogadoresRepo;
         }
-        [Route("administrativo-listar-jogadores")]
+
+        [Route("listar-jogadores")]
         public ActionResult Index()
         {
             var jogadoresViewModel = Mapper.Map<IList<ccn_jogadores>, IList<Jogadores>>(_jogadoresRepo.ObterTodos());
             return View(jogadoresViewModel);
         }
-        [Route("Details/{id:id}")]
+
+        [Route("{id:int}/detalhe-jogador")]
         public ActionResult Details(int id)
         {
             var jogadorPorId = _jogadoresRepo.ObterPorId(id);
@@ -32,7 +33,8 @@ namespace ColaComNois.Controllers
 
             return View(jogadorVieModel);
         }
-        [Route("administrativo-criar-jogador")]
+
+        [Route("cadastrar-jogador")]
         public ActionResult Create()
         {
             return View();
@@ -52,7 +54,8 @@ namespace ColaComNois.Controllers
 
             return View(jogador);
         }
-        [Route("administrativo-editar-jogador/{id:id}")]
+
+        [Route("{id:int}/editar-jogador")]
         public ActionResult Edit(int id)
         {
             var jogadorPorId = _jogadoresRepo.ObterPorId(id);
@@ -77,6 +80,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/deletar-jogador")]
         public ActionResult Delete(int id)
         {
             var jogador = _jogadoresRepo.ObterPorId(id);

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("administrativo")]
     public class RateiosController : Controller
     {
         private DespesasRepository _despesasRepo;
@@ -23,6 +24,7 @@ namespace ColaComNois.Controllers
             this._rateiosRepo = _rateiosRepo;
         }
 
+        [Route("listar-rateios")]
         public ActionResult Index()
         {
             var rateios = Mapper.Map<IList<Rateio>>(_rateiosRepo.ObterTodos());
@@ -31,6 +33,7 @@ namespace ColaComNois.Controllers
             return View(rateios);
         }
 
+        [Route("{id:int}/detalhe-jogador")]
         public ActionResult Details(int id)
         {
             var rateioPorId = _rateiosRepo.ObterPorId(id);
@@ -43,6 +46,7 @@ namespace ColaComNois.Controllers
             return View(rateioViewModel);
         }
 
+        [Route("cadastrar-rateio")]
         public ActionResult Create()
         {
             ViewBag.Jogadores = _jogadoresRepo.ObterAtivos();
@@ -68,6 +72,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/editar-rateio")]
         public ActionResult Edit(int id)
         {
             var despesaJogadorPorId = _rateiosRepo.ObterPorId(id);
@@ -96,6 +101,7 @@ namespace ColaComNois.Controllers
             }
         }
 
+        [Route("{id:int}/deletar-rateio")]
         public ActionResult Delete(int id)
         {
             var rateioPorId = _rateiosRepo.ObterPorId(id);

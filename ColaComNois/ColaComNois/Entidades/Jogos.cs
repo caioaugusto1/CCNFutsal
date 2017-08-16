@@ -7,6 +7,7 @@ namespace ColaComNois.Entidades
     public class Jogos : EntityBase
     {
         [Display(Name = "Quadro jogado")]
+        [EnumDataType(typeof(Quadro))]
         [Required(ErrorMessage = "Por favor, preencha o Quadro jogado")]
         public Quadro Quadro { get; set; }
 
@@ -28,6 +29,7 @@ namespace ColaComNois.Entidades
         public bool Mandante { get; set; }
 
         [Display(Name = "Jogo Referente")]
+        [EnumDataType(typeof(Referente))]
         [Required(ErrorMessage = "Por favor, preencha no que refere-se esse jogo")]
         public Referente Referente { get; set; }
 
