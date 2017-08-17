@@ -3,44 +3,42 @@
 <header>
     <div class="logo">
         C<span>CN</span>
-        <br />
+    </div>
+
+    <div id="mini-nav" class="hidden-phone">
+        <ul>
+            @if (SessionManager.UsuarioLogado != null)
+            {
+                <li>
+                    <a href="login.html">
+                        <span class="text-label">@SessionManager.UsuarioLogado.Nome </span>
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe088;"></span>
+                    </a>
+                    <ul class="user-summary">
+                        <li>
+                            <div class="summary">
+                                <div class="user-pic">
+                                    <img src="~/bootstrap/img/ccn.png" />
+                                </div>
+                                <div class="basic-details">
+                                    <h4 class="no-margin">@SessionManager.UsuarioLogado.Nome </h4>
+                                    <h5 class="no-margin">@SessionManager.UsuarioLogado.SobreNome </h5>
+                                    <small>Time de Futsal</small>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-xs btn-danger pull-right" onclick="location.href='@Url.Action("Logout", "Login")'">Sair</button>
+                            <span class="clearfix"></span>
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
     </div>
 </header>
-
-<div id="mini-nav" class="hidden-phone">
-    <ul>
-        @if (SessionManager.UsuarioLogado != null)
-            {
-            <li>
-                <a href="login.html">
-                    <span class="text-label">@SessionManager.UsuarioLogado.Nome </span>
-                    <span class="fs1" aria-hidden="true" data-icon="&#xe088;"></span>
-                </a>
-                <ul class="user-summary">
-                    <li>
-                        <div class="summary">
-                            <div class="user-pic">
-                                <img src="~/bootstrap/img/ccn.png" />
-                            </div>
-                            <div class="basic-details">
-                                <h4 class="no-margin">@SessionManager.UsuarioLogado.Nome </h4>
-                                <h5 class="no-margin">@SessionManager.UsuarioLogado.SobreNome </h5>
-                                <small>Time de Futsal</small>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <button class="btn btn-xs btn-danger pull-right" onclick="location.href='@Url.Action("Logout", "Login")'">Sair</button>
-                        <span class="clearfix"></span>
-                    </li>
-                </ul>
-            </li>
-        }
-    </ul>
-</div>
-
 <div class="main-container">
     <div class="sidebar hidden-xs">
         <div class="user-profile-pic">

@@ -960,7 +960,10 @@ ul.slick-menu {
     background: #f7f7f7; }
 
 .actions-icons .icons {
-  margin-right: 6px; }
+  margin-right: 6px; 
+  padding: 10px;
+
+}
 
 .page-title {
   margin-bottom: 20px;

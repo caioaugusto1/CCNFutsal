@@ -1,57 +1,102 @@
 ﻿@model IEnumerable<ColaComNois.Entidades.Despesas>
 
-@{
-    ViewBag.Title = "Listar - Despesas";
-}
+<head>
+    <title>Lista de despesas</title>
 
-<h3>Listar - Despesas</h3>
+    @{
+        Html.RenderPartial("_partial/_cabecalho_princp");
+        Html.RenderPartial("_partial/_cabecalho_list");
+    }
 
-<p>
-    @Html.ActionLink("Cadastrar Despesa", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data_Pagamento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data_Vencimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacao)
-        </th>
-        <th></th>
-    </tr>
+</head>
+<body>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @item.Valor.ToString("c")
-        </td>
-        <td>
-            @item.Data_Pagamento.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @item.Data_Pagamento.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacao)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detales", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Despesas
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Despesas</li>
+                            <li>/</li>
+                            <li>Listar</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
 
-</table>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:20%">Nome</th>
+                                            <th style="width:8%">Valor</th>
+                                            <th style="width:15%">Data de Vencimento</th>
+                                            <th style="width:15%">Data de Pagamento</th>
+                                            <th style="width: 7%">Status</th>
+                                            <th style="width:20%">Observação</th>
+                                            <th style="width:15%" class="hidden-phone">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Valor)
+                                                </td>
+                                                <td>
+                                                    @item.Data_Vencimento.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                    @item.Data_Pagamento.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                    @if (item.Status.ToString() == "A")
+                                                    {
+                                                        @: Pgto Aberto
+                                                    }
+                                                    else
+                                                    {
+                                                        @: Pago
+                                                    }  
+                                                </td>
+                                                <td>
+                                                    @item.Observacao
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Despesas", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Details", "Despesas", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Despesas", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

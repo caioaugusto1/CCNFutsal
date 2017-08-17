@@ -276,8 +276,10 @@
     <Content Include="bootstrap\img\trash-icon.png" />
     <Content Include="bootstrap\js\custom-index.js" />
     <Content Include="bootstrap\js\custom.js" />
+    <Content Include="bootstrap\js\dataTable.js" />
     <Content Include="bootstrap\js\html5-trunk.js" />
     <Content Include="bootstrap\js\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="bootstrap\js\jquery.easy-pie-chart.js" />
     <Content Include="bootstrap\js\jquery.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -395,9 +397,12 @@
     <Content Include="Views\Erro\Index.cshtml" />
     <Content Include="Views\Adversarios\Delete.cshtml" />
     <Content Include="Views\Shared\_partial\_menus.cshtml" />
-    <Content Include="Views\Shared\_partial\_header_bootstrap.cshtml" />
+    <Content Include="Views\Shared\_partial\_cabecalho_princp.cshtml" />
     <Content Include="Views\Jogadores\_partial\_form_CadsEdit.cshtml" />
     <Content Include="Views\Jogadores\_partial\_form_Detalhes_Deletar.cshtml" />
+    <Content Include="Views\Shared\_partial\_cabecalho_list.cshtml" />
+    <Content Include="Views\Despesas\_partial\_form_CadsEdit.cshtml" />
+    <Content Include="Views\Despesas\_partial\_form_Detalhes_Deletar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

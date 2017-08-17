@@ -9,10 +9,11 @@
     <title>Acesso - Cola Com Nois Futsal</title>
     
     @{
-        Html.RenderPartial("_partial/_header_bootstrap");
+        Html.RenderPartial("_partial/_cabecalho_princp");
     }
 
 </head>
+
 <body>
     <div class="main-container">
         <div class="row">
@@ -21,7 +22,7 @@
                 <div class="header">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Login<img style="width: 65px;" src="~/bootstrap/img/ccn.png" class="pull-right"></h3>
+                            <h3 style="color: #337ab7;">Login<img style="width: 65px;" src="~/bootstrap/img/ccn.png" class="pull-right"></h3>
                             <p>Digite o usuário e senha</p>
                             @if (ViewBag.Error == true)
                             {
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <input type="submit" class="btn btn-danger" value="Login" />
+                    <input type="submit" class="btn btn-blue btn-large pull-right" title="Acessar Sistema" data-toggle="tooltip" data-placement="bottom" value="Login" />
                     <div class="clearfix"></div>
                 </div>
             }

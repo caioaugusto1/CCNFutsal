@@ -1,10 +1,11 @@
 ﻿@model IList<ColaComNois.Entidades.Jogadores>
-<!DOCTYPE html>
+
 <head>
     <title>Lista de jogadores</title>
 
     @{
-        Html.RenderPartial("_partial/_header_bootstrap");
+        Html.RenderPartial("_partial/_cabecalho_princp");
+        Html.RenderPartial("_partial/_cabecalho_list");
     }
 
 </head>
@@ -12,7 +13,6 @@
     
     <div class="main-container">
         <div class="dashboard-wrapper">
-            <!-- Page title start -->
             <div class="page-title clearfix">
                 <h2>
                     Jogadores 
@@ -76,14 +76,11 @@
                                                     @Html.DisplayFor(modelItem => item.Comissao)
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("Edit", "Jogadores", new { Id = item.Id})" class="actions-icons">
-                                                        <img src="~/bootstrap/img/edit-icon.png" alt="Editar" class="icons">
+                                                    <a href="@Url.Action("Edit", "Jogadores", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" class="actions-icons">
-                                                        <img src="~/bootstrap/img/trash-icon.png" alt="Editar" class="icons">
+                                                    <a href="@Url.Action("Details", "Jogadores", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("Details", "Jogadores", new { Id = item.Id})" class="actions-icons">
-                                                        <img src="~/bootstrap/img/icon-wrench.png" alt="Editar" class="icons">
+                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -98,10 +95,6 @@
             </div>
         </div>
     </div>
-
-    <script src="~/bootstrap/js/jquery.min.js"></script>
-    <script src="~/bootstrap/js/jquery.easy-pie-chart.js"></script>
-    <script src="~/bootstrap/js/jquery.sparkline.js"></script>
-    <script src="~/bootstrap/js/jquery.dataTables.js"></script>
-    <script src="~/bootstrap/js/custom-tables.js"></script>
 </body>
+
+

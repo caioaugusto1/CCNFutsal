@@ -13,9 +13,9 @@ namespace ColaComNois.Entidades
             "Números e caracteres especiais não são permitidos no nome.")]
         public string Nome { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0,c}")]
+        //[DisplayFormat(DataFormatString = "{0,c}")]
         [Required(ErrorMessage = "Por favor, preencha o valor")]
-        public decimal Valor { get; set; }
+        public float Valor { get; set; }
 
         [Display(Name = "Data de Vencimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
@@ -30,7 +30,7 @@ namespace ColaComNois.Entidades
 
         [Display(Name = "Status de Pagamento")]
         [Required(ErrorMessage = "Por favor, preencha o Status de Pagamento")]
-        public Status StatusPagamento { get; set; }
+        public Status Status { get; set; }
 
         [Display(Name = "Observação")]
         public string Observacao { get; set; }

@@ -1,0 +1,47 @@
+﻿@model ColaComNois.Entidades.Despesas
+
+<tr>
+    <td>
+        <strong>Nome</strong>
+    </td>
+    <td>
+        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(model => model.Nome)</span>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Valor</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.Valor)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Data de Vencimento</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.Data_Vencimento)</td>
+</tr>
+<tr>
+    <td>
+        <strong>Data de Pagamento</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.Data_Pagamento)</td>
+</tr>
+<tr>
+    <td>
+        <strong>Status de Pagamento</strong>
+    </td>
+    <td>
+        <span class="text-error">@Html.DisplayFor(model => model.Status)</span>
+    </td>
+</tr>
+<tr>
+    <td>
+        <strong>Observação</strong>
+    </td>
+    <td>
+        <span class="text-error">@Html.DisplayFor(model => model.Observacao)</span>
+    </td>
+</tr>
+

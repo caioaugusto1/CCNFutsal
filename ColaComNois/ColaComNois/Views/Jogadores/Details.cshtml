@@ -3,7 +3,7 @@
 <head>
     @{
         ViewBag.Title = "Detalhes - Jogador";
-        Html.RenderPartial("_partial/_header_bootstrap");
+        Html.RenderPartial("_partial/_cabecalho_princp");
     }
 </head>
 
@@ -19,7 +19,7 @@
                             <li>/</li>
                             <li>Jogadores</li>
                             <li>/</li>
-                            <li>Detalhe</li>
+                            <li>Detalhes</li>
                         </ul>
                     </small>
                 </h2>
@@ -43,7 +43,7 @@
 
                                     <tr>
                                         <td colspan="4">
-                                            <a href="@Url.Action("Edit", "Jogadores", new { Id = Model.Id })" class="btn btn-warning btn-large pull-right" style="background-color: #337ab7; border-color: #fff">Editar</a>
+                                            <a href="@Url.Action("Edit", "Jogadores", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -92,28 +92,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Row end -->
         </div>
     </div>
 </body>
-
-<script src="js/jquery.easy-pie-chart.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#data-table').dataTable({
-            "sPaginationType": "full_numbers"
-        });
-        $("#data-table_length").css("display", "none")
-    });
-
-    jQuery('.delete-row').click(function () {
-        var conf = confirm('Continue delete?');
-        if (conf) jQuery(this).parents('tr').fadeOut(function () {
-            jQuery(this).remove();
-        });
-        return false;
-    });
-</script>
-</body>
-</html>
