@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace ColaComNois.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("administrativo")]
+    //[RoutePrefix("administrativo")]
     public class JogadoresController : Controller
     {
         private JogadoresRepository _jogadoresRepo;
@@ -25,7 +25,7 @@ namespace ColaComNois.Controllers
             return View(jogadoresViewModel);
         }
 
-        [Route("{id:int}/detalhe-jogador")]
+        //[Route("{id:int}/detalhe-jogador")]
         public ActionResult Details(int id)
         {
             var jogadorPorId = _jogadoresRepo.ObterPorId(id);

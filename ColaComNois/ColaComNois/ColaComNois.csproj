@@ -267,6 +267,7 @@
     <Content Include="bootstrap\img\ccn.png" />
     <Content Include="bootstrap\img\edit-icon.png" />
     <Content Include="bootstrap\img\female.png" />
+    <Content Include="bootstrap\img\icon-wrench.png" />
     <Content Include="bootstrap\img\logo.png" />
     <Content Include="bootstrap\img\male.png" />
     <Content Include="bootstrap\img\sorting.png" />
@@ -395,6 +396,8 @@
     <Content Include="Views\Adversarios\Delete.cshtml" />
     <Content Include="Views\Shared\_partial\_menus.cshtml" />
     <Content Include="Views\Shared\_partial\_header_bootstrap.cshtml" />
+    <Content Include="Views\Jogadores\_partial\_form_CadsEdit.cshtml" />
+    <Content Include="Views\Jogadores\_partial\_form_Detalhes_Deletar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@ namespace ColaComNois
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             //mapear rotas da controller
-            routes.MapMvcAttributeRoutes();
+            //routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",
