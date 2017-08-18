@@ -403,6 +403,12 @@
     <Content Include="Views\Shared\_partial\_cabecalho_list.cshtml" />
     <Content Include="Views\Despesas\_partial\_form_CadsEdit.cshtml" />
     <Content Include="Views\Despesas\_partial\_form_Detalhes_Deletar.cshtml" />
+    <Content Include="Views\Adversarios\_partial\_form_CadsEdit.cshtml" />
+    <Content Include="Views\Adversarios\_partial\_form_Detalhes_Deletar.cshtml" />
+    <Content Include="Views\Jogos\_partial\_form_CadsEdit.cshtml" />
+    <Content Include="Views\Jogos\_partial\_form_Detalhes_Deletar.cshtml" />
+    <Content Include="Views\Rateios\_partial\_form_CadsEdit.cshtml" />
+    <Content Include="Views\Rateios\_partial\_form_Detalhes_Deletar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,76 +1,61 @@
 ﻿@model ColaComNois.Entidades.Adversarios
 
 @{
-    ViewBag.Title = "Criar - Adversário";
+    ViewBag.Title = "Cadastrar - Adversários";
+    Html.RenderPartial("_partial/_cabecalho_princp");
 }
 
-<h3>Criar - Adversário</h3>
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Adversários
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Adversários</li>
+                    <li>/</li>
+                    <li>Cadastrar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Cadastrar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="~/bootstrap/img/ccn.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @using (Html.BeginForm("Create", "Adversarios", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                Html.RenderPartial("_partial/_form_CadsEdit", Model);
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nota, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Nota, "Selecione", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Nota)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cadastrar" class="btn btn-default" />
+                                <div class="form_submit clearfix">
+                                    <div class="row">
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div>
-        @Html.ActionLink("Voltar para Lista", "Index")
-    </div>
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#Telefone").mask("(99) 99999-9999");
-        });
-
-    </script>
-}

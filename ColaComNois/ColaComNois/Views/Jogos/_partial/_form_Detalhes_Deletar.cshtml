@@ -2,7 +2,7 @@
 
 <head>
     @{
-        ViewBag.Title = "Detalhes - Jogos;
+        ViewBag.Title = "Detalhes - Jogo";
         Html.RenderPartial("_partial/_cabecalho_princp");
     }
 </head>
@@ -43,7 +43,7 @@
 
                                     <tr>
                                         <td colspan="4">
-                                            <a href="@Url.Action("Edit", "Adversarios", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
+                                            <a href="@Url.Action("Edit", "Jogos", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -95,3 +95,4 @@
         </div>
     </div>
 </body>
+

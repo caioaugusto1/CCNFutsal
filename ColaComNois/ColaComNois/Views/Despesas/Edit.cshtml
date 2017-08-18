@@ -1,76 +1,66 @@
 ﻿@model ColaComNois.Entidades.Despesas
 
+<title>Editar - Jogador</title>
+
 @{
-    ViewBag.Title = "Editar - Despesa";
+    ViewBag.Title = "Editar - Despesas";
+    Html.RenderPartial("_partial/_cabecalho_princp");
 }
 
-<h3>Editar - Despesa</h3>
+<script src="~/bootstrap/js/jquery.easy-pie-chart.js"></script>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Despesas
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Despesas</li>
+                    <li>/</li>
+                    <li>Editar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Editar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="~/bootstrap/img/ccn.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            @using (Html.BeginForm("Edit", "Despesas", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data_Vencimento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data_Vencimento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data_Vencimento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                Html.RenderPartial("_partial/_form_CadsEdit", Model);
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data_Pagamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data_Pagamento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data_Pagamento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Status, "Selecione", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
+                                <div class="form_submit clearfix">
+                                    <div class="row">
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <button class="btn btn-primary btn-lg">Salvar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
+
+

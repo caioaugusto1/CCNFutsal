@@ -1,49 +1,97 @@
 ﻿@model ColaComNois.Entidades.Adversarios
 
-@{
-    ViewBag.Title = "Detalhes - Adversário";
-}
+<head>
+    @{
+        ViewBag.Title = "Detalhes - Adversário";
+        Html.RenderPartial("_partial/_cabecalho_princp");
+    }
+</head>
 
-<h3>Detalhes - Adversário</h3>
+<body>
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Adversários
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Adversários</li>
+                            <li>/</li>
+                            <li>Detalhes</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget no-margin">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="text-error">Detalhes</span>
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <table class="table table-striped table-hover">
+                                <tbody>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+                                    @{
+                                        Html.RenderPartial("_partial/_form_Detalhes_Deletar", Model);
+                                    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Responsavel)
-        </dt>
+                                    <tr>
+                                        <td colspan="4">
+                                            <a href="@Url.Action("Edit", "Adversarios", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Responsavel)
-        </dd>
+                            <hr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Observacao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Observacao)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar para Lista", "Index")
-</p>
+                            <table class="table table-striped table-hover no-margin">
+                                <thead>
+                                    <tr>
+                                        <th style="width:25%">Últimos Jogos</th>
+                                        <th style="width:5%">Qtd.</th>
+                                        <th style="width:15%">Valor</th>
+                                        <th style="width:10%">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>StartUp admin UI</td>
+                                        <td>1</td>
+                                        <td>$850.00 <em class="muted">Por item</em></td>
+                                        <td>$850.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">&nbsp;</td>
+                                        <td>
+                                            Sub total
+                                        </td>
+                                        <td>$850.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">&nbsp;</td>
+                                        <td>
+                                            <strong>Total de todos os itens</strong>
+                                        </td>
+                                        <td>
+                                            <strong class="text-error">$850.00</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

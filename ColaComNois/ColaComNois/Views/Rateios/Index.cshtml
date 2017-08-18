@@ -1,58 +1,93 @@
 ﻿@model IList<ColaComNois.Entidades.Rateio>
 
-@{
-    ViewBag.Title = "Listar - Rateio de Jogadores";
-}
+<head>
+    <title>Lista de Rateios</title>
 
-<h3>Listar - Rateio de Jogadores</h3>
+    @{
+        Html.RenderPartial("_partial/_cabecalho_princp");
+        Html.RenderPartial("_partial/_cabecalho_list");
+    }
 
-<p>
-    @Html.ActionLink("Cadastrar Rateio", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Jogador Nome
-        </th>
-        <th>
-            Despesa Nome
-        </th>
-        <th>
-            Valor
-        </th>
-        <th>
-            Data de Pagamento
-        </th>
-        <th>
-            Quem Recebeu?
-        </th>
-        <th></th>
-    </tr>
+</head>
+<body>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @item.Jogador.Nome
-        </td>
-        <td>
-            @item.Despesa.Nome
-        </td>
-        <td>
-            @item.Valor.ToString("c")
-        </td>
-        <td>
-            @item.Data_Pagamento.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @item.NomeRecebedor
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detailes", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Rateios
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Rateios</li>
+                            <li>/</li>
+                            <li>Listar</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
 
-</table>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:15%">Despesa Nome</th>
+                                            <th style="width:15%">Jogador Nome</th>
+                                            <th style="width:15%">Valor</th>
+                                            <th style="width:15%">Data de Pagamento</th>
+                                            <th style="width:15%">Quem Recebeu?</th>
+                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Despesa.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Jogador.Nome)
+                                                </td>
+                                                <td>
+                                                    @item.Valor.ToString("c")
+                                                </td>
+                                                <td>
+                                                    @item.Data_Pagamento.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                   @item.NomeRecebedor
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Rateios", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Details", "Rateios", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Rateios", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
