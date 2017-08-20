@@ -3,6 +3,7 @@ using ColaComNois.Context.DB;
 using ColaComNois.Entidades;
 using ColaComNois.Filters;
 using ColaComNois.Repository;
+using ColaComNois.Repository.Adpters;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -27,8 +28,8 @@ namespace ColaComNois.Controllers
         [Route("listar-rateios")]
         public ActionResult Index()
         {
-            var rateios = Mapper.Map<IList<Rateio>>(_rateiosRepo.ObterTodos());
-            //IList<Rateio> rateios = Mapper.Map<IList<CCN_Rateios>, IList<Rateio>>(_rateiosRepo.ObterTodos());
+            //var rateios = Mapper.Map<List<Rateio>>(_rateiosRepo.ObterTodos());
+            var rateios = _rateiosRepo.ObteImprovisado();
 
             return View(rateios);
         }
@@ -36,14 +37,14 @@ namespace ColaComNois.Controllers
         [Route("{id:int}/detalhe-jogador")]
         public ActionResult Details(int id)
         {
-            var rateioPorId = _rateiosRepo.ObterPorId(id);
-            var rateioViewModel = Mapper.Map<ccn_rateios, Rateio>(rateioPorId);
+            var rateioPorId = _rateiosRepo.ObterPorId(id).ToDomain();
+            var rateioViewModel = Mapper.Map<ccn_rateios, Rateio>(_rateiosRepo.ObterPorId(id));
 
             ViewBag.Jogadores = _jogadoresRepo.ObterPorId(rateioPorId.IdJogador);
             ViewBag.Despesas = _despesasRepo.ObterPorId(rateioPorId.IdDespesa);
             ViewBag.Recebedor = _jogadoresRepo.ObterPorId(Convert.ToInt32(rateioPorId.IdRecebedor));
 
-            return View(rateioViewModel);
+            return View(rateioPorId);
         }
 
         [Route("cadastrar-rateio")]
@@ -75,14 +76,14 @@ namespace ColaComNois.Controllers
         [Route("{id:int}/editar-rateio")]
         public ActionResult Edit(int id)
         {
-            var despesaJogadorPorId = _rateiosRepo.ObterPorId(id);
-            var despesaJogadoViewModel = Mapper.Map<ccn_rateios, Rateio>(despesaJogadorPorId);
+            var rateioJogadorPorId = _rateiosRepo.ObterPorId(id);
+            var rateiojogadorViewModel = Mapper.Map<ccn_rateios, Rateio>(rateioJogadorPorId);
 
             ViewBag.Jogadores = _jogadoresRepo.ObterTodos();
             ViewBag.Despesas = _despesasRepo.ObterTodos();
             ViewBag.Recebedor = _jogadoresRepo.ObterComissao();
 
-            return View(despesaJogadoViewModel);
+            return View(rateiojogadorViewModel);
         }
 
         [HttpPost]

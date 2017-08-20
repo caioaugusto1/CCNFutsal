@@ -237,6 +237,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Adpters\RateioAdapter.cs" />
     <Compile Include="Repository\AdversariosRepository.cs" />
     <Compile Include="Repository\Interfaces\ILoginRepository.cs" />
     <Compile Include="Repository\JogosRepository.cs" />
@@ -409,6 +410,7 @@
     <Content Include="Views\Jogos\_partial\_form_Detalhes_Deletar.cshtml" />
     <Content Include="Views\Rateios\_partial\_form_CadsEdit.cshtml" />
     <Content Include="Views\Rateios\_partial\_form_Detalhes_Deletar.cshtml" />
+    <Content Include="Views\Rateios\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

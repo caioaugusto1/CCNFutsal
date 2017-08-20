@@ -4,9 +4,9 @@
 
 <h3 class="heading-a">Geral</h3>
 <div class="form-group">
-    <label for="userName" class="col-sm-2 control-label">Nome Adversário</label>
+    <label for="IdAdversario" class="col-sm-2 control-label">Nome Adversário</label>
     <div class="col-sm-10">
-        @Html.DropDownListFor(model => model.IdAdversario, new SelectList(ViewBag.Adversarios, "Id", "Nome"), "Selecione", new { @class = "form-control", @id = "userName" })
+        @Html.DropDownListFor(model => model.IdAdversario, new SelectList(ViewBag.Adversarios, "Id", "Nome"), "Selecione", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.IdAdversario, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -58,10 +58,10 @@
     <label class="col-sm-2 control-label">Jogo Mandante?</label>
     <div class="col-sm-10">
         <label class="radio-inline">
-            <input type="radio" name="Mandante" id="optionsRadios1" value="option1" checked> Sim
+            @Html.RadioButtonFor(model => model.Mandante, true) Sim   
         </label>
         <label class="radio-inline">
-            <input type="radio" name="Mandante" id="optionsRadios2" value="option2"> Não
+            @Html.RadioButtonFor(model => model.Mandante, false) Não
         </label>
         @Html.ValidationMessageFor(model => model.Mandante, "", new { @class = "text-danger" })
     </div>
@@ -70,8 +70,7 @@
 <div class="form-group">
     <label for="Observacao" class="col-sm-2 control-label">Observação</label>
     <div class="col-sm-10">
-        <textarea id="Observacao" cols="30" rows="4" class="form-control"> 
-         </textarea>
+        @Html.TextAreaFor(model => model.Observacao, 4, 30, new { @class = "form-control"})
         @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
     </div>
 </div>

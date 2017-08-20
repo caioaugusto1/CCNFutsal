@@ -55,6 +55,8 @@ namespace ColaComNois.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Adversarios = _adversarioRepo.ObterTodos();
+
             return View(jogo);
         }
 

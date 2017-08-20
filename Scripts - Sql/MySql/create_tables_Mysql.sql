@@ -1,8 +1,4 @@
-create database colacomnois_;
-
-use colacomnois_;
-
-create table CCN_Logins(
+create table ccn_logins(
 	Id int auto_increment NOT NULL primary key,
 	Email varchar(30) NOT NULL,
 	Nome varchar(30) NOT NULL,
@@ -11,7 +7,7 @@ create table CCN_Logins(
 	Data_Inclusao datetime NOT NULL
 );
 
-CREATE TABLE CCN_Jogadores(
+CREATE TABLE ccn_jogadores(
 	Id int Auto_Increment NOT NULL primary key,
 	Nome varchar(100) NOT NULL,
 	RG varchar(12) NOT NULL,
@@ -22,7 +18,7 @@ CREATE TABLE CCN_Jogadores(
     );
     
     
-    CREATE TABLE CCN_Despesas(
+    CREATE TABLE ccn_despesas(
 	Id int Auto_Increment NOT NULL primary key,
 	Nome varchar(100) NOT NULL,
 	Valor decimal(18, 0) NOT NULL,
@@ -33,7 +29,7 @@ CREATE TABLE CCN_Jogadores(
     );
     
 
-CREATE TABLE CCN_Rateios(
+CREATE TABLE ccn_rateios(
 	Id int AUTO_INCREMENT NOT NULL primary key,
 	IdJogador int NOT NULL,
     IdRecebedor int NOT NULL,
@@ -41,14 +37,13 @@ CREATE TABLE CCN_Rateios(
 	Valor decimal(18, 0) NOT NULL,
 	Data_Pagamento datetime(3) NOT NULL,
     
-    index CCN_Jogadores(IdJogador), foreign key (IdJogador) References CCN_Jogadores(Id),
-	index CCN_Jogadores(IdRecebedor), foreign key (IdRecebedor) References CCN_Jogadores(Id),
-    index CCN_Despesas(IdDespesa), foreign key (IdDespesa) References CCN_Despesas(Id)
+    index ccn_jogadores(IdJogador), foreign key (IdJogador) References ccn_jogadores(Id),
+    index ccn_despesas(IdDespesa), foreign key (IdDespesa) References ccn_despesas(Id)
    
 );
 
 
-CREATE TABLE CCN_Adversarios(
+CREATE TABLE ccn_adversarios(
 	Id int AUTO_INCREMENT NOT NULL primary key,
 	Nome varchar(50) NOT NULL,
 	Responsavel varchar(30) NOT NULL,
@@ -58,7 +53,7 @@ CREATE TABLE CCN_Adversarios(
 );
 
 
-CREATE TABLE CCN_Jogos(
+CREATE TABLE ccn_jogos(
 	Id int AUTO_INCREMENT NOT NULL primary key,
 	Quadro char(1) NOT NULL,
 	Data date NOT NULL,
@@ -69,7 +64,7 @@ CREATE TABLE CCN_Jogos(
 	Observacao varchar(250) NOT NULL,
 	IdAdversario int NOT NULL,
     
-    foreign key (IdAdversario) references CCN_Adversarios(Id)
+    foreign key (IdAdversario) references ccn_adversarios(Id)
 );
 
-Alter table CCN_Rateios add constraint foreign key (IdRecebedor) REFERENCES CCN_Jogadores(Id)
+Alter table ccn_rateios add constraint foreign key (IdRecebedor) REFERENCES ccn_jogadores(Id)

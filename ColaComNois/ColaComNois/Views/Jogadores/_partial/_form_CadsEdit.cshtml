@@ -20,10 +20,10 @@
 </div>
 
 <div class="form-group">
-    <label for="birthDate" class="col-sm-2 control-label">Data de Nascimento</label>
+    <label for="Data_Nascimento" class="col-sm-2 control-label">Data de Nascimento</label>
     <div class="col-sm-10">
-        @Html.EditorFor(model => model.Data_Admissao, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Data_Admissao, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.Data_Nascimento, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
     </div>
 </div>
 
@@ -52,10 +52,12 @@
     <label class="col-sm-2 control-label">É Comissão?</label>
     <div class="col-sm-10">
         <label class="radio-inline">
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Sim
+            @Html.RadioButtonFor(model => model.Comissao, true, new { @class = "text-danger", @checked = "false", @id = "optionsRadios1" })
+            Sim
         </label>
         <label class="radio-inline">
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked> Não
+            @Html.RadioButtonFor(model => model.Comissao, false, new { @class = "text-danger", @checked = "true", @id = "optionsRadios2" })
+            Não
         </label>
         @Html.ValidationMessageFor(model => model.Comissao, "", new { @class = "text-danger" })
     </div>

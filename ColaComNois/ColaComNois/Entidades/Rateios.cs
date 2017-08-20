@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ColaComNois.Entidades
@@ -14,8 +15,8 @@ namespace ColaComNois.Entidades
         public int IdDespesa { get; set; }
 
         [Required(ErrorMessage = "Valor")]
-        [DisplayFormat(DataFormatString = "{0,c}")]
-        public decimal Valor { get; set; }
+        //[DisplayFormat(DataFormatString = "{0,c}")]
+        public float Valor { get; set; }
 
         [Required(ErrorMessage = "Por favor, preencha a Data de Pagamento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
@@ -29,14 +30,18 @@ namespace ColaComNois.Entidades
 
         public string NomeRecebedor { get; set; }
 
-        public virtual Jogadores Jogador { get; set; }
+        public string JogadorPagou { get; set; }
+
+        public string DespesaNome { get; set; }
+
+        public virtual ICollection<Jogadores> Jogador { get; set; }
 
         public virtual Despesas Despesa { get; set; }
 
-        public Rateio()
-        {
-            Jogador = new Jogadores();
-            Despesa = new Despesas();
-        }
+        //public Rateio()
+        //{
+        //    Jogador = new Jogadores();
+        //    Despesa = new Despesas();
+        //}
     }
 }

@@ -1,47 +1,40 @@
-﻿@model ColaComNois.Entidades.Jogadores
+﻿@model ColaComNois.Entidades.Rateio
 
 <tr>
     <td>
-        <strong>Nome</strong>
+        <strong>Despesa Nome</strong>
     </td>
     <td>
-        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(model => model.Nome)</span>
+        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(model => model.Despesa.Nome)</span>
     </td>
-</tr>
-
-<tr>
-    <td>
-        <strong>RG</strong>
-    </td>
-    <td>@Html.DisplayFor(model => model.RG)</td>
 </tr>
 
 <tr>
     <td>
-        <strong>Data de Nascimento</strong>
+        <strong>Jogador Nome</strong>
     </td>
-    <td>@Html.DisplayFor(model => model.Data_Nascimento)</td>
+    <td>@Html.DisplayFor(model => model.Jogador.Nome)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Valor</strong>
+    </td>
+    <td>@*@Html.DisplayFor(model => model.Valor)*@</td>
 </tr>
 <tr>
     <td>
-        <strong>Data de Admissão</strong>
+        <strong>Data de Pagamento</strong>
     </td>
-    <td>@Html.DisplayFor(model => model.Data_Admissao)</td>
+    <td>@Html.DisplayFor(model => model.Data_Pagamento)</td>
 </tr>
 <tr>
     <td>
-        <strong>Data de Demissão</strong>
+        <strong>Quem Recebeu?</strong>
     </td>
     <td>
-        <span class="text-error">@Html.DisplayFor(model => model.Data_Demissao)</em></span>
+        <span class="text-error">@Html.DisplayFor(model => model.NomeRecebedor)</span>
     </td>
 </tr>
-<tr>
-    <td>
-        <strong>É Comissão?</strong>
-    </td>
-    <td>
-        @Html.DisplayFor(model => model.Comissao)
-    </td>
-</tr>
+
 
