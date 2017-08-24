@@ -34,6 +34,9 @@ namespace ColaComNois.Entidades
 
         [Display(Name = "Observação")]
         public string Observacao { get; set; }
+
+        [Display(Name = "Ativo?")]
+        public bool Ativo { get; set; }
     }
 
 

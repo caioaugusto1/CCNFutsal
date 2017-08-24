@@ -35,59 +35,5 @@ namespace ColaComNois.Repository
             return _context.Database.Connection
                 .Query<Rateio>(sql).ToList();
         }
-
-        //public override IList<CCN_Rateios> ObterTodos()
-        //{
-        //    using (SqlConnection connSql = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmdSql = new SqlCommand("select CCN_Rateios.Id, CCN_Rateios.Valor, CCN_Rateios.Data_Pagamento, " +
-        //        "ccn_jogadores.Id, ccn_jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome " +
-        //        "from CCN_Rateios inner join ccn_jogadores on ccn_jogadores.Id = IdJogador " +
-        //        "inner join CCN_Despesas on CCN_Despesas.Id = IdDespesa order by JogadorNome " +
-        //        "select ccn_jogadores.Nome as RecebedorNome from ccn_jogadores inner join CCN_Rateios " +
-        //        " on ccn_jogadores.Id = CCN_Rateios.IdRecebedor", connSql);
-
-        //        connSql.Open();
-
-        //        var rateios = new List<Rateio>();
-
-        //        using (SqlDataReader sdr = cmdSql.ExecuteReader())
-        //        {
-        //            var rateio = new Rateio();
-
-        //            if (sdr.Read())
-        //            {
-        //                rateio.Id = (int)sdr["Id"];
-        //                rateio.Valor = (decimal)sdr["Valor"];
-        //                rateio.Jogador.Nome = (string)sdr["JogadorNome"];
-        //                rateio.NomeRecebedor = "Eae";
-        //                //rateio.NomeRecebedor = ((string)sdr["RecebedorNome"]);
-        //                rateio.Despesa.Nome = ((string)sdr["DespesaNome"]);
-        //                rateio.Data_Pagamento = (DateTime)sdr["Data_Pagamento"];
-        //            }
-
-        //            rateios.Add(rateio);
-        //        }
-
-        //        connSql.Close();
-
-        //        var e = Mapper.Map<IList<Rateio>, IList<CCN_Rateios>>(rateios);
-
-        //        return e;
-        //    }
-
-        //public override IList<CCN_Rateios> ObterTodos()
-        //{
-        //    var sql = "select CCN_Rateios.Id, CCN_Rateios.Valor, CCN_Rateios.Data_Pagamento" +
-        //        "ccn_jogadores.Id, ccn_jogadores.Nome as JogadorNome, CCN_Despesas.Nome as DespesaNome from CCN_Rateios " +
-        //        "inner join ccn_jogadores on ccn_jogadores.Id = IdJogador " +
-        //        "inner join CCN_Despesas on CCN_Despesas.Id = IdDespesa order by JogadorNome" +
-        //        "select ccn_jogadores.Nome as RecebedorNome from ccn_jogadores inner join CCN_Rateios" +
-        //        "on ccn_jogadores.Id = CCN_Rateios.IdRecebedor";
-
-        //    return _context.Database.Connection.Query<CCN_Rateios>(sql)
-        //        .OrderBy(c => c.Data_Pagamento)
-        //        .ToList();
-        //}
     }
 }

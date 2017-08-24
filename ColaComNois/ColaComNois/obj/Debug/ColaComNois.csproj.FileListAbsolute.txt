@@ -407,6 +407,6 @@ C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaCo
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\bin\Microsoft.AI.Web.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\obj\Debug\ColaComNois.csprojResolveAssemblyReference.cache
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\obj\Debug\ColaComNois.dll
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\obj\Debug\ColaComNois.pdb
-C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\CCN_Futsal\ColaComNois\ColaComNois\obj\Debug\ColaComNois.csprojResolveAssemblyReference.cache

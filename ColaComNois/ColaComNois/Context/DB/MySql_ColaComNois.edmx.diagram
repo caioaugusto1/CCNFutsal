@@ -5,13 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f9de51518c9e4f91bee54a3f62350a52" Name="Diagram1">
-        <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_adversarios" Width="1.5" PointX="2.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_despesas" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_jogadores" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_jogos" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_logins" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="colacomnois_ModelMySql.ccn_rateios" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="colacomnois_ModelMySql.ccn_jogos_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="colacomnois_ModelMySql.ccn_rateios_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="colacomnois_ModelMySql.ccn_rateios_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="colacomnois_ModelMySql.ccn_rateios_ibfk_3" ManuallyRouted="false" />

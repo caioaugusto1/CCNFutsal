@@ -25,7 +25,8 @@ CREATE TABLE ccn_jogadores(
 	Data_Vencimento datetime NOT NULL,
 	Data_Pagamento datetime NULL,
 	Status char(1) NOT NULL,
-	Observacao varchar(200) NULL
+	Observacao varchar(200) NULL,
+    Ativo Tinyint NOT NULL
     );
     
 
@@ -35,7 +36,7 @@ CREATE TABLE ccn_rateios(
     IdRecebedor int NOT NULL,
 	IdDespesa int NOT NULL,
 	Valor decimal(18, 0) NOT NULL,
-	Data_Pagamento datetime(3) NOT NULL,
+	Data_Pagamento datetime NOT NULL,
     
     index ccn_jogadores(IdJogador), foreign key (IdJogador) References ccn_jogadores(Id),
     index ccn_despesas(IdDespesa), foreign key (IdDespesa) References ccn_despesas(Id)

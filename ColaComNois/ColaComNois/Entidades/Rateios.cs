@@ -28,10 +28,13 @@ namespace ColaComNois.Entidades
         [Display(Name = "Quem Recebeu?")]
         public int IdRecebedor { get; set; }
 
+        [ScaffoldColumn(false)]
         public string NomeRecebedor { get; set; }
 
+        [ScaffoldColumn(false)]
         public string JogadorPagou { get; set; }
 
+        [ScaffoldColumn(false)]
         public string DespesaNome { get; set; }
 
         public virtual ICollection<Jogadores> Jogador { get; set; }

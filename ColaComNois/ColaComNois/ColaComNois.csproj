@@ -239,6 +239,7 @@
     </Compile>
     <Compile Include="Repository\Adpters\RateioAdapter.cs" />
     <Compile Include="Repository\AdversariosRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDespesasRepository.cs" />
     <Compile Include="Repository\Interfaces\ILoginRepository.cs" />
     <Compile Include="Repository\JogosRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />

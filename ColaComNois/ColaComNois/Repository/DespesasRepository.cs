@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ColaComNois.Context;
 using ColaComNois.Context.DB;
+using ColaComNois.Repository.Interfaces;
 using System.Linq;
-using System;
 
 namespace ColaComNois.Repository
 {
-    public class DespesasRepository : RepositoryBase<ccn_despesas>
+    public class DespesasRepository : RepositoryBase<ccn_despesas>, IDespesasRepository
     {
         public DespesasRepository(ColaComNoisContext context)
             : base(context)
@@ -14,11 +15,16 @@ namespace ColaComNois.Repository
 
         }
 
-        //public override IList<CCN_Despesas> ObterTodos()
-        //{
-        //    return _context.Despesas.Where(d => d.Data_Vencimento > DateTime.Today.AddDays(Convert.ToDouble(-30)))
-        //        .OrderBy(d => d.Status) 
-        //        .ThenBy(d => d.Nome).ToList();
-        //}
+        public IList<ccn_despesas> ObterAtivos()
+        {
+            return ObterTodos().Where(d => d.Ativo);
+        }
+
+        public void Ativar(int id)
+        {
+            var e = _context.Despesas.Where(d => d.Id == id).FirstOrDefault();
+            e.Ativo = false;
+            Salvar();
+        }
     }
 }
