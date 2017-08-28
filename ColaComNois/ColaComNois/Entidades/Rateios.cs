@@ -41,10 +41,10 @@ namespace ColaComNois.Entidades
 
         public virtual Despesas Despesa { get; set; }
 
-        //public Rateio()
-        //{
-        //    Jogador = new Jogadores();
-        //    Despesa = new Despesas();
-        //}
+        public Rateio()
+        {
+            Jogador = new List<Jogadores>();
+            Despesa = new Despesas();
+        }
     }
 }

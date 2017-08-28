@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="colacomnois_ModelMySql.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MySql_ColaComNoisModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ccn_adversarios">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,11 +22,12 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Valor" Type="float" Nullable="false" />
           <Property Name="Data_Vencimento" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="Data_Pagamento" Type="datetime" Precision="0" />
           <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Observacao" Type="varchar" MaxLength="200" />
+          <Property Name="Ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ccn_jogadores">
           <Key>
@@ -124,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="colacomnois_ModelMySqlStoreContainer">
+        <EntityContainer Name="MySql_ColaComNoisModelStoreContainer">
           <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" Schema="colacomnois_" store:Type="Tables" />
           <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" Schema="colacomnois_" store:Type="Tables" />
           <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" Schema="colacomnois_" store:Type="Tables" />
@@ -148,11 +149,10 @@
             <End Role="ccn_rateios" EntitySet="ccn_rateios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="colacomnois_ModelMySql" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MySql_ColaComNoisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ccn_adversarios">
           <Key>
             <PropertyRef Name="Id" />
@@ -171,12 +171,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Valor" Type="Decimal" Nullable="false" />
+          <Property Name="Valor" Type="Single" Nullable="false" />
           <Property Name="Data_Vencimento" Type="DateTime" Nullable="false" />
           <Property Name="Data_Pagamento" Type="DateTime" />
           <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Observacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_despesas" ToRole="ccn_rateios" />
+          <Property Name="Ativo" Type="Boolean" />
         </EntityType>
         <EntityType Name="ccn_jogadores">
           <Key>
@@ -280,7 +281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MySql_ColaComNois_" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" />
           <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" />
           <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" />
@@ -309,9 +310,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="colacomnois_ModelMySqlStoreContainer" CdmEntityContainer="MySql_ColaComNois_">
+        <EntityContainerMapping StorageEntityContainer="MySql_ColaComNoisModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="ccn_adversarios">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_adversarios">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_adversarios">
               <MappingFragment StoreEntitySet="ccn_adversarios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -323,8 +324,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ccn_despesas">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_despesas">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_despesas">
               <MappingFragment StoreEntitySet="ccn_despesas">
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -336,7 +338,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ccn_jogadores">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogadores">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_jogadores">
               <MappingFragment StoreEntitySet="ccn_jogadores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -349,7 +351,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ccn_jogos">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogos">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_jogos">
               <MappingFragment StoreEntitySet="ccn_jogos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Quadro" ColumnName="Quadro" />
@@ -364,7 +366,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ccn_logins">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_logins">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_logins">
               <MappingFragment StoreEntitySet="ccn_logins">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -376,7 +378,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ccn_rateios">
-            <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_rateios">
+            <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_rateios">
               <MappingFragment StoreEntitySet="ccn_rateios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdJogador" ColumnName="IdJogador" />

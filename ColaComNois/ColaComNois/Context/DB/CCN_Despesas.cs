@@ -22,11 +22,12 @@ namespace ColaComNois.Context.DB
     
         public int Id { get; set; }
         public string Nome { get; set; }
-        public decimal Valor { get; set; }
+        public float Valor { get; set; }
         public System.DateTime Data_Vencimento { get; set; }
         public Nullable<System.DateTime> Data_Pagamento { get; set; }
         public string Status { get; set; }
         public string Observacao { get; set; }
+        public Nullable<bool> Ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ccn_rateios> ccn_rateios { get; set; }

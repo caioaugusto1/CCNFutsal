@@ -17,7 +17,8 @@ namespace ColaComNois.Repository
 
         public IList<ccn_despesas> ObterAtivos()
         {
-            return ObterTodos().Where(d => d.Ativo);
+            var e = _context.Despesas.Where(d => d.Ativo.HasValue && d.Ativo == true);
+            return e.ToList();
         }
 
         public void Ativar(int id)
