@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="colacomnois_ModelMySql" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MySql_ColaComNoisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ccn_adversarios">
     <Key>
       <PropertyRef Name="Id" />
@@ -18,12 +18,13 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Valor" Type="Decimal" Nullable="false" />
+    <Property Name="Valor" Type="Single" Nullable="false" />
     <Property Name="Data_Vencimento" Type="DateTime" Nullable="false" />
     <Property Name="Data_Pagamento" Type="DateTime" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Observacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ccn_rateios" Relationship="Self.ccn_rateios_ibfk_2" FromRole="ccn_despesas" ToRole="ccn_rateios" />
+    <Property Name="Ativo" Type="Boolean" />
   </EntityType>
   <EntityType Name="ccn_jogadores">
     <Key>
@@ -127,7 +128,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MySql_ColaComNois_" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ccn_adversarios" EntityType="Self.ccn_adversarios" />
     <EntitySet Name="ccn_despesas" EntityType="Self.ccn_despesas" />
     <EntitySet Name="ccn_jogadores" EntityType="Self.ccn_jogadores" />

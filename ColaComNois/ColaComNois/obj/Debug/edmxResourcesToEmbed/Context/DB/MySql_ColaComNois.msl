@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="colacomnois_ModelMySqlStoreContainer" CdmEntityContainer="MySql_ColaComNois_">
+  <EntityContainerMapping StorageEntityContainer="MySql_ColaComNoisModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="ccn_adversarios">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_adversarios">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_adversarios">
         <MappingFragment StoreEntitySet="ccn_adversarios">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -14,8 +14,9 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ccn_despesas">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_despesas">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_despesas">
         <MappingFragment StoreEntitySet="ccn_despesas">
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -27,7 +28,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ccn_jogadores">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogadores">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_jogadores">
         <MappingFragment StoreEntitySet="ccn_jogadores">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -40,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ccn_jogos">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_jogos">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_jogos">
         <MappingFragment StoreEntitySet="ccn_jogos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Quadro" ColumnName="Quadro" />
@@ -55,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ccn_logins">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_logins">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_logins">
         <MappingFragment StoreEntitySet="ccn_logins">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -67,7 +68,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ccn_rateios">
-      <EntityTypeMapping TypeName="colacomnois_ModelMySql.ccn_rateios">
+      <EntityTypeMapping TypeName="MySql_ColaComNoisModel.ccn_rateios">
         <MappingFragment StoreEntitySet="ccn_rateios">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdJogador" ColumnName="IdJogador" />

@@ -17,7 +17,6 @@ namespace ColaComNois.Context
         {
             modelBuilder.Entity<ccn_rateios>().HasRequired(m => m.ccn_despesas);
             modelBuilder.Entity<ccn_rateios>().HasRequired(m => m.ccn_jogadores);
-
             modelBuilder.Entity<ccn_jogos>().HasRequired(m => m.ccn_adversarios);
 
             //base.OnModelCreating(modelBuilder);

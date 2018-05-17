@@ -13,10 +13,10 @@ namespace ColaComNois.Context.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MySql_ColaComNois_ : DbContext
+    public partial class Entities : DbContext
     {
-        public MySql_ColaComNois_()
-            : base("name=MySql_ColaComNois_")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

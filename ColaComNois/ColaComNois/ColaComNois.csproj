@@ -76,12 +76,10 @@
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -245,7 +243,6 @@
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\RateiosRepository.cs" />
     <Compile Include="Repository\DespesasRepository.cs" />
-    <Compile Include="Repository\Interfaces\IRateioRepository.cs" />
     <Compile Include="Repository\Interfaces\IJogadoresRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepositoryBase.cs" />
     <Compile Include="Repository\JogadoresRepository.cs" />
@@ -324,13 +321,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Context\DB\MySql_ColaComNois.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MySql_ColaComNois.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Context\DB\MySql_ColaComNois.edmx.diagram">
-      <DependentUpon>MySql_ColaComNois.edmx</DependentUpon>
-    </Content>
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -340,6 +330,13 @@
     <Content Include="bootstrap\icomoon\fonts\icomoon.ttf" />
     <Content Include="bootstrap\icomoon\fonts\icomoon.woff" />
     <Content Include="bootstrap\icomoon\fonts\icomoond41d.eot" />
+    <EntityDeploy Include="Context\DB\MySql_ColaComNois.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MySql_ColaComNois.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Context\DB\MySql_ColaComNois.edmx.diagram">
+      <DependentUpon>MySql_ColaComNois.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
